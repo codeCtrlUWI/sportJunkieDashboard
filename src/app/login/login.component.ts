@@ -13,7 +13,7 @@ import {AngularFire} from "angularfire2";
 })
 
 export class LoginComponent {
-  constructor(private af: AngularFire, private router: Router) {
+  constructor(private af: AngularFire, private router: Router) { }
     onSubmit(formData){
       console.log(formData.value);
       this.af.auth.login({
@@ -30,4 +30,4 @@ export class LoginComponent {
         })
     }
   }
-}
+
