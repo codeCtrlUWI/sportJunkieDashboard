@@ -1,0 +1,14 @@
+<md-card>
+  <md-card-header>Login</md-card-header>
+  <md-card-content>
+    <form #formData='ngForm' (ngSubmit)="onSubmit(formData)">
+      <label>Enter email address
+        <input type ="text" name="email" (ngModel)="email" required>
+      </label>
+      <label> Password
+        <input type="password" name="password" (ngModel)="password" required>
+      </label>
+      <button type="submit" [disabled]="!formData.valid">Submit</button>
+    </form>
+  </md-card-content>
+</md-card>
