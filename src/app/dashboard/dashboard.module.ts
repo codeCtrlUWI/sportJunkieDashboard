@@ -4,25 +4,26 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
-import { LoginRoutingModule } from './login-routing.module';
-import { LoginComponent } from './login.component';
+
+import { DashboardComponent } from './dashboard.component';
 import { MaterialModule } from '@angular/material';
 
 @NgModule({
   imports:[
-    LoginRoutingModule,
+
     FormsModule,
     MaterialModule
   ],
 
   exports: [
-    LoginComponent
+    DashboardComponent
   ],
   declarations: [
-    LoginComponent
+    DashboardComponent
   ]
 })
 
-export class LoginModule { }
+export class DashModule { }
+
 
 

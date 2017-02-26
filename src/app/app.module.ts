@@ -7,6 +7,8 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { MaterialModule } from '@angular/material';
 import { LoginModule } from './login/login.module';
+import { DashModule } from './dashboard/dashboard.module';
+
 
 export const firebaseConfig = {
   apiKey: 'AIzaSyCvjY_1pbNlPw0PoGjHxOjSxTcu0gug09M',
@@ -24,8 +26,9 @@ export const firebaseAuthConfig ={
 
 @NgModule({
   declarations: [
-    AppComponent
-  ],
+    AppComponent,
+
+      ],
   imports: [
     BrowserModule,
     FormsModule,
@@ -33,7 +36,8 @@ export const firebaseAuthConfig ={
     AngularFireModule.initializeApp(firebaseConfig, firebaseAuthConfig),
     AppRoutingModule,
     MaterialModule,
-    LoginModule
+    LoginModule,
+    DashModule
   ],
   providers: [],
   bootstrap: [AppComponent]

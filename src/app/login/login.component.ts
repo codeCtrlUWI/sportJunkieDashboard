@@ -8,8 +8,8 @@ import {AngularFire} from "angularfire2";
 
 @Component({
   moduleId: module.id,
-  selector: 'app-login',
-  templateUrl: 'app/login/login.component.html'
+  selector: 'login',
+  templateUrl: './login.component.html'
 })
 
 export class LoginComponent {
