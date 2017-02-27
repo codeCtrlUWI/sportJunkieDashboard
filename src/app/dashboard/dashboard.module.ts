@@ -7,17 +7,26 @@ import { FormsModule } from '@angular/forms';
 
 import { DashboardComponent } from './dashboard.component';
 import { MaterialModule } from '@angular/material';
+import { DashRoutingModule} from './dashboard-routing.module';
+import {AuthGuard} from "../auth/auth-guard.service";
 
 @NgModule({
   imports:[
 
     FormsModule,
-    MaterialModule
+    MaterialModule,
+    DashRoutingModule
   ],
 
   exports: [
-    DashboardComponent
+    DashboardComponent,
+    DashRoutingModule
   ],
+
+  providers: [
+    AuthGuard
+  ],
+
   declarations: [
     DashboardComponent
   ]
