@@ -11,11 +11,11 @@ import { DashModule } from './dashboard/dashboard.module';
 
 
 export const firebaseConfig = {
-  apiKey: 'AIzaSyCvjY_1pbNlPw0PoGjHxOjSxTcu0gug09M',
-  authDomain: 'sjapp-4c72a.firebaseapp.com',
-  databaseURL: 'https://sjapp-4c72a.firebaseio.com',
-  storageBucket: 'sjapp-4c72a.appspot.com',
-  messagingSenderId: '242489775623'
+  apiKey: "AIzaSyCk_oQCj08uydAWGPGDi6lGDKmhrJuBtAQ",
+  authDomain: "official-sjapp.firebaseapp.com",
+  databaseURL: "https://official-sjapp.firebaseio.com",
+  storageBucket: "official-sjapp.appspot.com",
+  messagingSenderId: "800945379816"
 };
 
 export const firebaseAuthConfig ={
