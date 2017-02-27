@@ -16,7 +16,8 @@ import { MaterialModule } from '@angular/material';
   ],
 
   exports: [
-    LoginComponent
+    LoginComponent,
+    LoginRoutingModule
   ],
   declarations: [
     LoginComponent

@@ -34,10 +34,10 @@ export const firebaseAuthConfig ={
     FormsModule,
     HttpModule,
     AngularFireModule.initializeApp(firebaseConfig, firebaseAuthConfig),
-    AppRoutingModule,
     MaterialModule,
     LoginModule,
-    DashModule
+    DashModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]
