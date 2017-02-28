@@ -12,7 +12,7 @@ import { AngularFire } from 'angularfire2';
 @Injectable()
 
 export class AuthGuard implements CanActivate{
-  public allowed: boolean;
+
 
   constructor(private af: AngularFire, private router: Router) { }
 

@@ -8,6 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { MaterialModule } from '@angular/material';
 import { LoginModule } from './login/login.module';
 import { DashModule } from './dashboard/dashboard.module';
+import {AuthGuard} from "./auth/auth-guard.service";
 
 
 export const firebaseConfig = {
@@ -36,10 +37,9 @@ export const firebaseAuthConfig ={
     AngularFireModule.initializeApp(firebaseConfig, firebaseAuthConfig),
     MaterialModule,
     LoginModule,
-    DashModule,
 
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
