@@ -15,12 +15,12 @@ import {AuthGuard} from "../auth/auth-guard.service";
 
     FormsModule,
     MaterialModule,
-    DashRoutingModule
-  ],
+    //DashRoutingModule
+      ],
 
   exports: [
     DashboardComponent,
-    DashRoutingModule
+
   ],
 
   providers: [

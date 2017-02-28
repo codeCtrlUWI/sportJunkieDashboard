@@ -7,16 +7,15 @@ import {RouterModule, Routes} from '@angular/router';
 import { DashboardComponent } from './dashboard.component';
 import { AuthGuard }  from 'app/auth/auth-guard.service';
 
-const routes: Routes = [
+const appRoutes: Routes = [
   {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
 
 ];
 
 
 NgModule({
-  imports: [ RouterModule.forRoot(routes)],
+  imports: [ RouterModule.forRoot(appRoutes)],
   exports: [RouterModule],
-
 })
 
 export class DashRoutingModule {}
