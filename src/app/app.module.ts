@@ -37,6 +37,7 @@ export const firebaseAuthConfig ={
     AngularFireModule.initializeApp(firebaseConfig, firebaseAuthConfig),
     MaterialModule,
     LoginModule,
+    DashModule,
 
   ],
   providers: [AuthGuard],
