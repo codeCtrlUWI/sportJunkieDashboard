@@ -1,0 +1,12 @@
+.logoutButton{
+    font-family: 'Helvetica Neue', Helvetica, sans-serif;
+    font-size: 18px;
+    background-color: white;
+    -webkit-transition-duration: 0.5s;
+    transition-duration: 0.5s;
+
+}
+.logoutButton:hover {
+    background-color: dodgerblue;
+    color: black;
+}
