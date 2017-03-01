@@ -1,1 +1,9 @@
 <h1>Welcome</h1>
+<button (click)="logout()">Logout</button>
+
+<ul *ngFor="let article of articles|async">
+  <li >
+    {{article.data}}
+  </li>
+
+</ul>
