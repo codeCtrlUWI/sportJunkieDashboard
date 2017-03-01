@@ -1,33 +1,9 @@
+<div>
 
-<div class="container-fluid">
-<div class="row">
-  <div class="col-6 col-md col-sm">
-
-  </div>
-  <div class="col-6 col-md-5 col-sm-6 col-xs-5" id="bigColumn">
-    <ul class="angular-big-card" *ngFor="let one of items|async">
-      <div class="card" id="big-card">
-        <img class="card-img"  src="{{one.urlToImage}}">
-        <div class="card-block-big">
-          <p class="card-text">{{one.title}}</p>
-          <hr>
-          <p class="card-category">{{one.category}}</p>
-        </div>
-      </div>
-    </ul>
-  </div>
-  <div class="col-6 col-md-2 col-sm-4 col-xs-3" id="smallColumn">
-    <ul class="angular-small-card" *ngFor="let one of items|async">
-      <div class="card" id="small-card">
-        <h4 class="card-title">{{one.subTitle}}</h4>
-        <img class="card-img-top" src="{{one.urlToImage}}">
-        <div class="card-block-small">
-          <p class="card-text">{{one.title}}</p>
-          <p class="card-category">{{one.category}}</p>
-        </div>
-      </div>
-    </ul>
-  </div>
-</div>
 
 </div>
+
+<router-outlet></router-outlet>
+
+
+
