@@ -8,7 +8,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { MaterialModule } from '@angular/material';
 import { LoginModule } from './login/login.module';
 import { DashModule } from './dashboard/dashboard.module';
+
+import {AddArticleModule} from './add-article/add-article.module'
+
+
 import {AuthGuard} from "./auth/auth-guard.service";
+import { AddArticleComponent } from './add-article/add-article.component';
+
 
 
 export const firebaseConfig = {
@@ -28,7 +34,6 @@ export const firebaseAuthConfig ={
 @NgModule({
   declarations: [
     AppComponent,
-
       ],
   imports: [
     BrowserModule,
@@ -38,6 +43,7 @@ export const firebaseAuthConfig ={
     MaterialModule,
     LoginModule,
     DashModule,
+      AddArticleModule,
 
   ],
   providers: [AuthGuard],
