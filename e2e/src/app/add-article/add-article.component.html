@@ -1,0 +1,23 @@
+
+<br>
+<form #formData='ngForm' (ngSubmit)="onSubmit(formData, $event)" id="form">
+  <input id="username" pInputText  type ="text" name="title" (ngModel)="title" required placeholder="Title">
+  <input id="password" pInputText type="text"  name="category"  (ngModel)="category" placeholder="category" required>
+  <input id="password" pInputText type="text"  name="data"  (ngModel)="data" placeholder="data" required>
+  <input id="username" pInputText  type ="text" name="subTitle" (ngModel)="subTitle" required placeholder="subTitle">
+  <button type="submit"  [disabled]="!formData.valid" id="buttonSubmit">Submit</button>
+  <br>
+
+</form>
+
+<o2-upload-to-fbs (change)="onChange($event)" [fbsBasePath]="'Profile Pictures/'" [btnSelectText] = "'Browse'"></o2-upload-to-fbs>
+
+<!-- Add End -->
+
+
+<p>{{imageLink}}</p>
+
+
+
+
+

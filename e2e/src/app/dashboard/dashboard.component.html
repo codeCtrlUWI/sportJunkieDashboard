@@ -1,0 +1,32 @@
+<div class="container-fluid">
+<nav class="navbar navbar-toggleable-xl navbar-inverse bg-inverse fixed-top" id="navbarMain">
+  <a class="navbar-brand" href="#">
+    <img class="brand" src="assets/edited_sj.png"  alt="" >
+    SportJunkie Author Dashboard
+  </a>
+  <li class="addArticle">
+    <button class="logoutButton" (click)="addArticle()" md-raised-button disableRipple> Add Article</button>
+  </li>
+  <li class="ml-auto p-2">
+    <button class="logoutButton" (click)="logout()" md-raised-button disableRipple> Logout</button>
+  </li>
+</nav>
+
+<div class="row" style="margin-top: 100px">
+  <div class=" col-3 col-sm-4  col-lg-3" *ngFor="let article of articles|async">
+    <md-card  id="eachCard" style="margin-bottom: 35px" >
+      <md-card-title style="word-wrap: break-word">
+        {{article.Title}}
+      </md-card-title>
+      <md-card-subtitle>
+        {{article.category}}
+      </md-card-subtitle>
+      <img id="cardImg" md-card-image src="{{article.imageURL}}">
+      <div id="textUnder">
+        {{article.subTitle}}
+      </div>
+    </md-card>
+    </div>
+</div>
+
+</div>
