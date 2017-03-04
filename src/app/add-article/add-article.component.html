@@ -5,19 +5,24 @@
   <input id="password" pInputText type="text"  name="category"  (ngModel)="category" placeholder="category" required>
   <input id="password" pInputText type="text"  name="data"  (ngModel)="data" placeholder="data" required>
   <input id="username" pInputText  type ="text" name="subTitle" (ngModel)="subTitle" required placeholder="subTitle">
-  <button type="submit"  [disabled]="!formData.valid" id="buttonSubmit">Submit</button>
+  <button type="submit"  [disabled]="!formData.valid|| clicked==false" id="buttonSubmit">Submit</button>
   <br>
 
 </form>
 
-<o2-upload-to-fbs (change)="onChange($event)" [fbsBasePath]="'Profile Pictures/'" [btnSelectText] = "'Browse'"></o2-upload-to-fbs>
 
-<!-- Add End -->
-
+<div class="input-group" style="width: 500px">
+  <input type="file" (change)="onChange($event)" class="form-control" placeholder="Search for...">
+  <span class="input-group-btn">
+    <button class="btn btn-default" [disabled]="!file" (click)="UploadFile();setClicked()" type="submit"> Upload file </button>
+  </span>
+</div>
+<br><br>
+<div *ngIf="clicked==true">
+  <div class="container-fluid" id="progressbar">
+    <p-progressBar [value]="progress" ></p-progressBar>
+  </div>
+</div>
 
 <p>{{imageLink}}</p>
-
-
-
-
 

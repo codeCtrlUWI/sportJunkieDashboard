@@ -6,19 +6,20 @@ import{AddArticleComponent} from './add-article.component'
 
 
 import {FileUploadModule} from 'primeng/primeng';
+import {ProgressBarModule} from 'primeng/primeng';
 import {ImageService} from "angular2-image-upload/lib/image.service";
 
 
-import { O2UploadToFbsComponent } from 'o2-upload-to-fbs';
 
 @NgModule({
   imports: [
     FormsModule,
       BrowserModule,
+      FileUploadModule,
+      ProgressBarModule,
   ],
   declarations:
-      [AddArticleComponent,
-      O2UploadToFbsComponent],
+      [AddArticleComponent],
 
   providers: [
     ImageService,
