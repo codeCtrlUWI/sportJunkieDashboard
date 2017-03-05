@@ -5,8 +5,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import{AddArticleComponent} from './add-article.component'
 
 
-import {FileUploadModule} from 'primeng/primeng';
-import {ProgressBarModule} from 'primeng/primeng';
+import {MaterialModule} from "@angular/material";
+import {InputTextareaModule} from 'primeng/primeng';
+import {DialogModule} from 'primeng/primeng';
+import {ButtonModule} from 'primeng/primeng';
+import {GrowlModule} from 'primeng/primeng';
 
 
 
@@ -15,8 +18,12 @@ import {ProgressBarModule} from 'primeng/primeng';
   imports: [
     FormsModule,
       BrowserModule,
-      FileUploadModule,
       ProgressBarModule,
+      MaterialModule,
+      InputTextareaModule,
+      DialogModule,
+      ButtonModule,
+      GrowlModule,
   ],
   declarations:
       [AddArticleComponent],
