@@ -7,7 +7,7 @@ import{AddArticleComponent} from './add-article.component'
 
 import {FileUploadModule} from 'primeng/primeng';
 import {ProgressBarModule} from 'primeng/primeng';
-import {ImageService} from "angular2-image-upload/lib/image.service";
+
 
 
 
@@ -22,7 +22,7 @@ import {ImageService} from "angular2-image-upload/lib/image.service";
       [AddArticleComponent],
 
   providers: [
-    ImageService,
+
   ],
 
   exports:[AddArticleComponent],
