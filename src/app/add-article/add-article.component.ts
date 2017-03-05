@@ -3,6 +3,7 @@ import {AngularFire, FirebaseListObservable, FirebaseApp} from 'angularfire2';
 import {Router} from "@angular/router";
 import * as firebase from "firebase";
 import { UUID } from 'angular2-uuid';
+import {Message} from 'primeng/primeng';
 
 @Component({
   selector: 'app-add-article',
@@ -12,20 +13,26 @@ import { UUID } from 'angular2-uuid';
 
 export class AddArticleComponent{
 
-
   articles:FirebaseListObservable<any[]>;
 
-  storage;
-  path;
-  storageref;
-  imageLink;
+    category;
+    storage;
+    path;
+    storageref;
+    imageLink;
     uid;
-  file;
+    file;
     progress;
     clicked;
-    onChangeState;
     email;
-     uuid;
+    uuid;
+    completed;
+    showMessage;
+    spinner;
+
+    msgs: Message[] = [];
+
+
 
 
   constructor(private af:AngularFire, private router:Router, @Inject(FirebaseApp) firebaseApp:any) {
@@ -41,7 +48,15 @@ export class AddArticleComponent{
           this. uuid= UUID.UUID();
       });
 
+      this.completed=false;
       this.clicked=false;
+      this.showMessage=true;
+      this.spinner=true;
+
+      setTimeout(() => {
+          this.msgs.push({severity:'success', summary:'Hooray', detail:'Upload Completed!'});
+      }, 0);
+
   }
 
 
@@ -61,7 +76,7 @@ UploadFile(){
     this.storage =firebase.storage().ref();
     this.path = "Profile Pictures/"+this.email+"-"+this.uid+"-"+this.uuid;
     this.storageref = this.storage.child(this.path);
-    this.imageLink= "booga";
+    this.imageLink= "";
 
     var uploadTask = this.storageref.put(this.file);
     var that= this;
@@ -72,6 +87,17 @@ UploadFile(){
         // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
         var progress = Math.floor((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
         that.progress= progress;
+        that.spinner=true;
+        that.showMessage=true;
+        if (progress==100){
+            that.completed=true;
+                that.spinner=false;
+
+            setTimeout(function () {
+                that.showMessage=false;
+                that.completed=false;
+            },3000);
+        }
         console.log('Upload is ' + progress + '% done');
         switch (snapshot.state) {
             case firebase.storage.TaskState.PAUSED: // or 'paused'
@@ -101,7 +127,7 @@ UploadFile(){
       title: formData.value.title,
       authorUID: this.uid,
       imageURL: this.imageLink,
-      category: formData.value.category,
+      category: this.category,
       data: formData.value.data,
       subTitle: formData.value.subTitle,
     });
@@ -112,6 +138,13 @@ UploadFile(){
         this.clicked= true;
     }
 
+    categoryChange(this,dropdown){
+        this.category= dropdown.value;
+    }
+
+    changeCompleted(){
+        this.completed=false;
+    }
 
 
 }

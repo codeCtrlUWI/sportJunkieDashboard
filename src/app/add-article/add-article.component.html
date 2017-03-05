@@ -1,28 +1,84 @@
+<div class="container-fluid">
+<div class="row">
+
+<form #formData='ngForm' (ngSubmit)="onSubmit(formData, $event)" id="form" xmlns="http://www.w3.org/1999/html">
+
+  <div class="form-group" style="width: 50%">
+    <label for="title">Title:</label>
+    <textarea rows="2" cols="70" id="title" name="title" (ngModel)="title" pInputTextarea required></textarea>
+  </div>
+
+
+
+
+
+
+  <div class="form-group" style="width: 50%">
+     <label for="data" >Data:</label>
+    <textarea rows="9" cols="140" id="data" name="data" (ngModel)="data" pInputTextarea required></textarea>
+  </div>
+
+
+
+
+
+
+
+  <div class="form-group" style="width: 50%">
+    <label style="display: block" for="subTitle">Subtitle:</label>
+    <textarea rows="2" cols="70" id="subTitle" name="subTitle" (ngModel)="subTitle" pInputTextarea required></textarea>
+  </div>
+
+
+  <div class="form-group" style="width: 30%">
+    <label for="exampleSelect1">Select Category:</label>
+    <select class="form-control" id="exampleSelect1" #dropdrown (change)="categoryChange(dropdrown)"  required>
+      <option disabled selected value>--Choose an Option-- </option>
+      <option >Football</option>
+      <option>Cricket</option>
+      <option>Swimming</option>
+    </select>
+  </div>
+
+  {{category}}
+
+  <br>
+  <br>
+
+
+
+
+    <div class="Upload">
+      <label style="display: block">Image for Article:</label>
+      <input type="file" accept=".jpg,.png,.gif" (change)="onChange($event)" class="form-control" id="fileInput"  placeholder="Search for..." required>
+      <button class="btn btn-warning" type="button" [disabled]="!file" (click)="UploadFile();setClicked()"> Upload file </button>
+      <div *ngIf="completed==false &&clicked==true &&spinner==true" id="progresscircle">
+        <md-progress-circle  class="md-progress" mode="indeterminate" ></md-progress-circle>
+      </div>
+      <div *ngIf="(completed==true && showMessage==true)" >
+        <p-growl id="growl" life="4000" [value]="msgs"></p-growl>
+      </div>
+    </div>
+
+
 
 <br>
-<form #formData='ngForm' (ngSubmit)="onSubmit(formData, $event)" id="form">
-  <input id="username" pInputText  type ="text" name="title" (ngModel)="title" required placeholder="Title">
-  <input id="password" pInputText type="text"  name="category"  (ngModel)="category" placeholder="category" required>
-  <input id="password" pInputText type="text"  name="data"  (ngModel)="data" placeholder="data" required>
-  <input id="username" pInputText  type ="text" name="subTitle" (ngModel)="subTitle" required placeholder="subTitle">
-  <button type="submit"  [disabled]="!formData.valid|| clicked==false" id="buttonSubmit">Submit</button>
+
+
+  <button pButton type="submit" [disabled]="!formData.valid|| clicked==false" (click)="console.log('Success')" id="buttonSubmit" label="Submit"></button>
   <br>
 
 </form>
 
 
-<div class="input-group" style="width: 500px">
-  <input type="file" (change)="onChange($event)" class="form-control" placeholder="Search for...">
-  <span class="input-group-btn">
-    <button class="btn btn-default" [disabled]="!file" (click)="UploadFile();setClicked()" type="submit"> Upload file </button>
-  </span>
-</div>
-<br><br>
-<div *ngIf="clicked==true">
-  <div class="container-fluid" id="progressbar">
-    <p-progressBar [value]="progress" ></p-progressBar>
-  </div>
-</div>
 
-<p>{{imageLink}}</p>
 
+
+
+
+
+<br> <br> <br>
+
+
+</div>
+</div>
