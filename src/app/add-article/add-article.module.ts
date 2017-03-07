@@ -11,15 +11,6 @@ import {ButtonModule} from 'primeng/primeng';
 import {GrowlModule} from 'primeng/primeng';
 import 'hammerjs';
 
-<<<<<<< HEAD
-=======
-import {MaterialModule} from "@angular/material";
-import {InputTextareaModule} from 'primeng/primeng';
-import {DialogModule} from 'primeng/primeng';
-import {ButtonModule} from 'primeng/primeng';
-import {GrowlModule} from 'primeng/primeng';
-
->>>>>>> 19a749548bb406fa2ea81785ea4a582ec878f963
 
 
 
@@ -27,10 +18,6 @@ import {GrowlModule} from 'primeng/primeng';
   imports: [
     FormsModule,
       BrowserModule,
-<<<<<<< HEAD
-=======
-
->>>>>>> 19a749548bb406fa2ea81785ea4a582ec878f963
       MaterialModule,
       InputTextareaModule,
       DialogModule,
