@@ -18,7 +18,7 @@ import {GrowlModule} from 'primeng/primeng';
   imports: [
     FormsModule,
       BrowserModule,
-      ProgressBarModule,
+
       MaterialModule,
       InputTextareaModule,
       DialogModule,

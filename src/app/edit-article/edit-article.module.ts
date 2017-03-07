@@ -36,5 +36,5 @@ import {GrowlModule} from 'primeng/primeng';
 
   exports:[],
 })
-export class AddArticleModule { }
+export class EditArticleModule { }
 
