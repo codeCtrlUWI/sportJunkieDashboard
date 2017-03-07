@@ -4,16 +4,19 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import {AngularFireModule, AuthMethods, AuthProviders}  from 'angularfire2';
 import { AppComponent } from './app.component';
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule} from './app-routing';
+import { RouterModule } from '@angular/router';
 import { MaterialModule } from '@angular/material';
-import { LoginModule } from './login/login.module';
-import { DashModule } from './dashboard/dashboard.module';
-
-import {AddArticleModule} from './add-article/add-article.module'
+import {ButtonModule} from 'primeng/primeng';
+import {InputTextModule} from 'primeng/primeng';
+import { LoginComponent } from './login/login.component';
+import { LoginRoutingModule } from './login/login-routing.module';
+import { DashModule} from './dashboard/dashboard.module';
 
 
 import {AuthGuard} from "./auth/auth-guard.service";
-import { AddArticleComponent } from './add-article/add-article.component';
+
+
 
 
 
@@ -34,18 +37,24 @@ export const firebaseAuthConfig ={
 @NgModule({
   declarations: [
     AppComponent,
-      ],
+    LoginComponent,
+              ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     AngularFireModule.initializeApp(firebaseConfig, firebaseAuthConfig),
-    MaterialModule,
-    LoginModule,
+    MaterialModule.forRoot(),
+    ButtonModule,
+    InputTextModule,
     DashModule,
-      AddArticleModule,
+    LoginRoutingModule,
+    AppRoutingModule
+
 
   ],
+  exports: [
+              ],
   providers: [AuthGuard],
   bootstrap: [AppComponent]
 })

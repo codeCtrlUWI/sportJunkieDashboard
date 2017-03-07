@@ -8,7 +8,7 @@ import {AngularFire} from "angularfire2";
 
 @Component({
   moduleId: module.id,
-  selector: 'login',
+  selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls:['./login.component.css']
 })

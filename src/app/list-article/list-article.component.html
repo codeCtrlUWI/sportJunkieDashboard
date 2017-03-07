@@ -1,0 +1,26 @@
+<div class="ui-overlaypanel-content" style="margin-top: 58px; height:100px; width: 100%; text-align: center; background-color: #cccccc" >
+
+  <button md-fab (click)="addArticle()">
+    <md-icon >add</md-icon>
+  </button>
+
+</div>
+
+<div class="row" style="margin-top: 200px;">
+  <div class=" col-3 col-sm-4  col-lg-3" *ngFor="let article of articles|async">
+    <md-card  id="eachCard" style="margin-bottom: 35px" >
+      <md-card-title style="word-wrap: break-word">
+        {{article.Title}}
+      </md-card-title>
+      <md-card-subtitle>
+        {{article.category}}
+      </md-card-subtitle>
+      <img id="cardImg" md-card-image src="{{article.imageURL}}">
+      <div id="textUnder">
+        {{article.subTitle}}
+      </div>
+    </md-card>
+  </div>
+</div>
+
+

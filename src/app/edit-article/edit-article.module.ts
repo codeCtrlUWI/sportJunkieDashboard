@@ -1,8 +1,10 @@
+/**
+ * Created by dylan on 3/5/17.
+ */
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
-import{AddArticleComponent} from './add-article.component'
 
 
 import {MaterialModule} from "@angular/material";
@@ -17,16 +19,16 @@ import {GrowlModule} from 'primeng/primeng';
 @NgModule({
   imports: [
     FormsModule,
-      BrowserModule,
+    BrowserModule,
 
-      MaterialModule,
-      InputTextareaModule,
-      DialogModule,
-      ButtonModule,
-      GrowlModule,
+    MaterialModule,
+    InputTextareaModule,
+    DialogModule,
+    ButtonModule,
+    GrowlModule,
   ],
   declarations:
-      [AddArticleComponent],
+    [],
 
   providers: [
 
@@ -34,4 +36,5 @@ import {GrowlModule} from 'primeng/primeng';
 
   exports:[],
 })
-export class AddArticleModule { }
+export class EditArticleModule { }
+

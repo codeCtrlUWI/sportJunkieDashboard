@@ -18,30 +18,9 @@ export class DashboardComponent {
 
   constructor(private af: AngularFire, private router: Router) {
 
-    this.af.auth.subscribe(authData => {
-            console.log(authData);
-
-            let uid=authData.uid;
-
-     this.articles=this.af.database.list('/ARTICLES', {
-       query: {
-         orderByChild: 'authorUID',
-         equalTo: uid
-       }
-     });
-
-     this.articles.subscribe(
-       val => console.log(val)
-     );
-     }
-
-   );
-
   }
 
-  addArticle(){
-      this.router.navigate(['/addArticle'])
-  }
+
 
 
 
