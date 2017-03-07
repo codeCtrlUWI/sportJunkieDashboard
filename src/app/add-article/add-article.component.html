@@ -1,6 +1,8 @@
-<div class="container-fluid">
+<div class="container-fluid" style="margin-top: 100px">
 <div class="row">
-
+  <button md-fab (click)="goBack()">
+    <md-icon >back</md-icon>
+  </button>
 <form #formData='ngForm' (ngSubmit)="onSubmit(formData, $event)" id="form" xmlns="http://www.w3.org/1999/html">
 
   <div class="form-group" style="width: 50%">

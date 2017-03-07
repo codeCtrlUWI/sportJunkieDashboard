@@ -38,7 +38,7 @@ import {AddArticleComponent} from "../add-article/add-article.component";
     DialogModule,
     GrowlModule,
     DataScrollerModule,
-    //DashRoutingModule
+    DashRoutingModule
       ],
 
   exports: [
@@ -52,7 +52,7 @@ import {AddArticleComponent} from "../add-article/add-article.component";
 
   declarations: [
     DashboardComponent,
-    //ListArticleComponent,
+    ListArticleComponent,
     AddArticleComponent
 
 

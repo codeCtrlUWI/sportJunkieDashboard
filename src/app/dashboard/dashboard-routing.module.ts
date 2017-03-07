@@ -11,8 +11,11 @@ import { AddArticleComponent } from '../add-article/add-article.component';
 
 
 const dashRoutes: Routes = [
-  {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
-  {path: 'add', component: AddArticleComponent, canActivate: [AuthGuard] }
+  {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard], children:[
+    {path: '', component: ListArticleComponent},
+    {path: 'add', component: AddArticleComponent}
+   ]},
+
 
 
 

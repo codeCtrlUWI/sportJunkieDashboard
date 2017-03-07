@@ -20,9 +20,7 @@ export class DashboardComponent {
 
   }
 
-  addArticle(){
-      this.router.navigate(['/add-article'])
-  }
+
 
 
 

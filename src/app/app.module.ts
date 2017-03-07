@@ -47,8 +47,8 @@ export const firebaseAuthConfig ={
     MaterialModule.forRoot(),
     ButtonModule,
     InputTextModule,
-    LoginRoutingModule,
     DashModule,
+    LoginRoutingModule,
     AppRoutingModule
 
 

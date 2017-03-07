@@ -38,7 +38,9 @@ export class ListArticleComponent {
     );
 
   }
-
+  addArticle(){
+    this.router.navigate(['/dashboard/add'])
+  }
 
 
  }

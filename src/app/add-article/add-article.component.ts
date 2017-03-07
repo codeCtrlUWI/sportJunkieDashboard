@@ -4,6 +4,8 @@ import {Router} from "@angular/router";
 import * as firebase from "firebase";
 import { UUID } from 'angular2-uuid';
 import {Message} from 'primeng/primeng';
+import { Location } from '@angular/common';
+
 
 @Component({
   selector: 'app-add-article',
@@ -35,7 +37,7 @@ export class AddArticleComponent{
 
 
 
-  constructor(private af:AngularFire, private router:Router, @Inject(FirebaseApp) firebaseApp:any) {
+  constructor(private location: Location,private af:AngularFire, private router:Router, @Inject(FirebaseApp) firebaseApp:any) {
 
     this.articles = af.database.list('/ARTICLES');
 
@@ -145,8 +147,9 @@ UploadFile(){
     changeCompleted(){
         this.completed=false;
     }
-
-
+  goBack(){
+    this.location.back();
+  }
 }
 
 

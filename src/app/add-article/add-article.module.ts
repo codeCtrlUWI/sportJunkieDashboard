@@ -32,6 +32,6 @@ import {GrowlModule} from 'primeng/primeng';
 
   ],
 
-  exports:[AddArticleComponent],
+  exports:[],
 })
 export class AddArticleModule { }
