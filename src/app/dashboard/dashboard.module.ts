@@ -38,8 +38,12 @@ import {AddArticleComponent} from "../add-article/add-article.component";
     DialogModule,
     GrowlModule,
     DataScrollerModule,
+<<<<<<< HEAD
     DashRoutingModule,
       ButtonModule
+=======
+    DashRoutingModule
+>>>>>>> 19a749548bb406fa2ea81785ea4a582ec878f963
       ],
 
   exports: [
