@@ -8,12 +8,13 @@ import { DashboardComponent } from './dashboard.component';
 import { AuthGuard }  from 'app/auth/auth-guard.service';
 import { ListArticleComponent } from '../list-article/list-article.component';
 import { AddArticleComponent } from '../add-article/add-article.component';
-
+import { ViewArticleComponent } from '../view-article/view-article.component';
 
 const dashRoutes: Routes = [
   {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard], children:[
     {path: '', component: ListArticleComponent},
-    {path: 'add', component: AddArticleComponent}
+    {path: 'add', component: AddArticleComponent},
+    {path: 'view/:id', component: ViewArticleComponent}
    ]},
 
 

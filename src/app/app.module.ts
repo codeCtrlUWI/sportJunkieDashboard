@@ -12,7 +12,6 @@ import {InputTextModule} from 'primeng/primeng';
 import { LoginComponent } from './login/login.component';
 import { LoginRoutingModule } from './login/login-routing.module';
 import { DashModule} from './dashboard/dashboard.module';
-import 'hammerjs';
 
 
 import {AuthGuard} from "./auth/auth-guard.service";

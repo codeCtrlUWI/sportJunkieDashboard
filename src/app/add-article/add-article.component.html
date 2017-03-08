@@ -1,7 +1,7 @@
 <div class="container-fluid" style="margin-top: 100px">
 <div class="row">
-  <button md-fab (click)="goBack()">
-    <md-icon >back</md-icon>
+  <button md-fab style="text-align: center;"  (click)="goBack()">
+    <md-icon ></md-icon> <-
   </button>
 <form #formData='ngForm' (ngSubmit)="onSubmit(formData, $event)" id="form" xmlns="http://www.w3.org/1999/html">
 
@@ -67,13 +67,10 @@
 <br>
 
 
-  <button pButton type="submit" [disabled]="!formData.valid|| clicked==false" id="buttonSubmit" label="Submit"></button>
+  <button pButton type="submit" [disabled]="!formData.valid|| clicked==false" (click)="console.log('Success')" id="buttonSubmit" label="Submit"></button>
   <br>
 
 </form>
-
-
-
 
 
 

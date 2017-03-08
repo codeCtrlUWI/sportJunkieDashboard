@@ -39,7 +39,11 @@ export class ListArticleComponent {
 
   }
   addArticle(){
-    this.router.navigate(['/dashboard/add'])
+    this.router.navigate(['/dashboard/add']);
+  }
+
+  viewArticle(articleId){
+    this.router.navigate(['/dashboard/view',articleId]);
   }
 
 

@@ -200,9 +200,9 @@ export class AddArticleComponent{
         this.completed=false;
     }
 
-  goBack(){
-    this.location.back();
-  }
+    goBack(){
+        this.location.back();
+    }
 
 
 
