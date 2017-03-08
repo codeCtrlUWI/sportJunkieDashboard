@@ -17,12 +17,13 @@ import {AuthGuard} from "../auth/auth-guard.service";
 
 import {AddArticleModule} from "../add-article/add-article.module"
 import { ListArticleComponent } from '../list-article/list-article.component';
-
+import { ViewArticleComponent } from '../view-article/view-article.component';
 
 import {InputTextareaModule} from 'primeng/primeng';
 import {DialogModule} from 'primeng/primeng';
 import {ButtonModule} from 'primeng/primeng';
 import {GrowlModule} from 'primeng/primeng';
+import { ArticleService } from './article.service';
 
 
 
@@ -37,6 +38,7 @@ import {AddArticleComponent} from "../add-article/add-article.component";
     MaterialModule.forRoot(),
     DialogModule,
     GrowlModule,
+    ButtonModule,
     DataScrollerModule,
     DashRoutingModule
       ],
@@ -47,13 +49,15 @@ import {AddArticleComponent} from "../add-article/add-article.component";
   ],
 
   providers: [
-    AuthGuard
+    AuthGuard,
+    ArticleService
   ],
 
   declarations: [
     DashboardComponent,
     ListArticleComponent,
-    AddArticleComponent
+    AddArticleComponent,
+    ViewArticleComponent
 
 
   ]

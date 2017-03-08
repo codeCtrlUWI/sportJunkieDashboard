@@ -46,3 +46,10 @@ md-grid-tile figure {
 ::-webkit-scrollbar-thumb{
   background: red;
 }
+.add-button {
+  height:115px;
+  width: 115px;
+  background-color: red;
+  color: white;
+}
+
