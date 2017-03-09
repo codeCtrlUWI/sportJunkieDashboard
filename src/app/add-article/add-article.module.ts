@@ -10,6 +10,7 @@ import {InputTextareaModule} from 'primeng/primeng';
 import {DialogModule} from 'primeng/primeng';
 import {ButtonModule} from 'primeng/primeng';
 import {GrowlModule} from 'primeng/primeng';
+import 'hammerjs';
 
 
 
@@ -18,7 +19,6 @@ import {GrowlModule} from 'primeng/primeng';
   imports: [
     FormsModule,
       BrowserModule,
-
       MaterialModule,
       InputTextareaModule,
       DialogModule,
@@ -26,7 +26,7 @@ import {GrowlModule} from 'primeng/primeng';
       GrowlModule,
   ],
   declarations:
-      [AddArticleComponent],
+      [],
 
   providers: [
 
