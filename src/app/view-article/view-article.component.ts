@@ -16,12 +16,12 @@ import {Location }  from '@angular/common';
 
 export class ViewArticleComponent implements OnInit {
 
-  //article: FirebaseObjectObservable<any>;
- // constructor(private as: ArticleService, private route:ActivatedRoute, private location: Location){}
+  article: FirebaseObjectObservable<any>;
+  constructor(private as: ArticleService, private route:ActivatedRoute, private location: Location){}
   ngOnInit(): void {
 
-   // this.route.params.switchMap((params:Params)=>this.as.getArticle(+params['id'])).subscribe(article => this.article=article);
-   // console.log(this.article);
+    this.route.params.switchMap((params:Params)=>this.as.getArticle(params['id'])).subscribe(article => this.article=article);
+    console.log(this.article);
   }
 
 
