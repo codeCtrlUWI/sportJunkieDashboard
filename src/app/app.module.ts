@@ -12,7 +12,9 @@ import {InputTextModule} from 'primeng/primeng';
 import { LoginComponent } from './login/login.component';
 import { LoginRoutingModule } from './login/login-routing.module';
 import { DashModule} from './dashboard/dashboard.module';
-
+import { EditorModule, SharedModule } from 'primeng/primeng';
+//import { QuillModule } from 'ngx-quill';
+import { CKEditorModule } from 'ng2-ckeditor';
 
 import {AuthGuard} from "./auth/auth-guard.service";
 
@@ -46,6 +48,8 @@ export const firebaseAuthConfig ={
     AngularFireModule.initializeApp(firebaseConfig, firebaseAuthConfig),
     MaterialModule.forRoot(),
     ButtonModule,
+    //QuillModule,
+    CKEditorModule,
     InputTextModule,
     DashModule,
     LoginRoutingModule,

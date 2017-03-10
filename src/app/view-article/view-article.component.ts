@@ -21,8 +21,10 @@ export class ViewArticleComponent implements OnInit {
   ngOnInit(): void {
 
     this.route.params.switchMap((params:Params)=>this.as.getArticle(params['id'])).subscribe(article => this.article=article);
-    console.log(this.article);
+  console.log(this.article)
   }
 
-
+goBack(){
+    this.location.back();
+}
 }

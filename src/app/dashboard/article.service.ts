@@ -7,8 +7,14 @@ export class ArticleService {
   constructor(private af: AngularFire) { }
 
   getArticle(aritcleId): Promise<FirebaseObjectObservable<any>>{
-    this.article=this.af.database.object('/ARTICLES/'+aritcleId);
+
+    this.af.database.object('/ARTICLES/'+aritcleId).subscribe(article => {
+      this.article=article;
+
+      });
+
     return Promise.resolve(this.article);
-  }
+
+}
 
 }
