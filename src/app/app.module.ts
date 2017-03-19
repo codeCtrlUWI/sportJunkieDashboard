@@ -15,7 +15,7 @@ import { DashModule} from './dashboard/dashboard.module';
 import { EditorModule, SharedModule } from 'primeng/primeng';
 //import { QuillModule } from 'ngx-quill';
 import { CKEditorModule } from 'ng2-ckeditor';
-
+import {PanelModule} from 'primeng/primeng';
 import {AuthGuard} from "./auth/auth-guard.service";
 
 
@@ -48,6 +48,7 @@ export const firebaseAuthConfig ={
     AngularFireModule.initializeApp(firebaseConfig, firebaseAuthConfig),
     MaterialModule.forRoot(),
     ButtonModule,
+    PanelModule,
     //QuillModule,
     CKEditorModule,
     InputTextModule,

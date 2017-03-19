@@ -23,6 +23,7 @@ import { EditArticleComponent } from '../edit-article/edit-article.component';
 import {InputTextareaModule} from 'primeng/primeng';
 import {DialogModule} from 'primeng/primeng';
 import {ButtonModule} from 'primeng/primeng';
+import {PanelModule} from 'primeng/primeng';
 import {GrowlModule} from 'primeng/primeng';
 import { ArticleService } from './article.service';
 
@@ -40,6 +41,7 @@ import {AddArticleComponent} from "../add-article/add-article.component";
     DialogModule,
     GrowlModule,
     ButtonModule,
+    PanelModule,
     EditorModule,
     SharedModule,
     CKEditorModule,

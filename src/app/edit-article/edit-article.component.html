@@ -1,6 +1,6 @@
 <div class="ui-overlaypanel-content" style="margin-top: 120px;">
-  <button md-fab style="text-align: center;"  (click)="goBack()">
-    <md-icon ></md-icon> <-
+  <button md-fab class="back-button" (click)="goBack()">
+    <i class="material-icons" style="font-size: 40px">arrow_back</i>
   </button>
   <h1 *ngIf="article">{{article.title }}</h1>
   <h3 *ngIf="article">{{article.subtitle }}</h3>
@@ -10,7 +10,10 @@
   <br>
   <a *ngIf="article">{{article.category }}</a>
   <br>
-  <a *ngIf="article">{{article.articleData }}</a>
 
-  <p-editor *ngIf="article" [(ngModel)]="article.articleData" [style]="{'height':'320px'}"></p-editor>
+
+  <textarea rows="9" cols="140" pInputTextarea *ngIf="article" [(ngModel)]="article.articleData" > </textarea>
+
+  <button (click)="edit()">edit</button>
+
 </div>

@@ -17,6 +17,7 @@ import {Location }  from '@angular/common';
 
 export class EditArticleComponent implements OnInit {
   article: FirebaseObjectObservable<any>;
+  data: string;
   constructor(private as: ArticleService, private route:ActivatedRoute, private location: Location){}
   ngOnInit(): void {
 
@@ -25,6 +26,13 @@ export class EditArticleComponent implements OnInit {
 
   }
 
+
+  edit() {
+    this.article.subscribe(article =>{
+      console.log(article)
+    })
+    //this.article.update({articleData: })
+  }
 
   goBack(){
     this.location.back();

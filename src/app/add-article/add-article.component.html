@@ -1,7 +1,7 @@
 <div class="container-fluid" style="margin-top: 100px">
 <div class="row">
-  <button md-fab style="text-align: center;"  (click)="goBack()">
-    <md-icon ></md-icon> <-
+  <button md-fab class="back-button" (click)="goBack()">
+  <i class="material-icons" style="font-size: 40px">arrow_back</i>
   </button>
 <form #formData='ngForm' (ngSubmit)="onSubmit(formData, $event)" id="form" xmlns="http://www.w3.org/1999/html">
 
