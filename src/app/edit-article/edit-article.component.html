@@ -11,9 +11,10 @@
   <a *ngIf="article">{{article.category }}</a>
   <br>
 
+  <form #formData='ngForm' (ngSubmit)="onSubmit(formData)" id="form">
+  <textarea id="data" name="articleText" rows="9" cols="140" pInputTextarea *ngIf="article" [(ngModel)]="article.articleData" > </textarea>
+    <button pButton type="submit" class="ui-button-warning" [disabled]="!formData.valid" label="Submit" id="buttonSubmit"></button>
+  </form>
 
-  <textarea rows="9" cols="140" pInputTextarea *ngIf="article" [(ngModel)]="article.articleData" > </textarea>
-
-  <button (click)="edit()">edit</button>
 
 </div>

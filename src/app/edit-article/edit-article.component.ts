@@ -18,7 +18,7 @@ import {Location }  from '@angular/common';
 export class EditArticleComponent implements OnInit {
   article: FirebaseObjectObservable<any>;
   data: string;
-  constructor(private as: ArticleService, private route:ActivatedRoute, private location: Location){}
+  constructor(private as: ArticleService, private route:ActivatedRoute, private location: Location,private af: AngularFire){}
   ngOnInit(): void {
 
     this.route.params.switchMap((params:Params)=>this.as.getArticle(params['id'])).subscribe(article => this.article=article);
@@ -27,11 +27,19 @@ export class EditArticleComponent implements OnInit {
   }
 
 
-  edit() {
-    this.article.subscribe(article =>{
-      console.log(article)
+  onSubmit(formData) {
+    console.log(formData.value);
+    this.data=formData.value.articleText;
+    console.log(this.data)
+    this.route.params.subscribe(params =>{
+      this.af.database.object("/ARTICLES/"+params['id']).update({articleData:this.data})
     })
-    //this.article.update({articleData: })
+
+    //add confirmation popup and error handling
+
+
+
+
   }
 
   goBack(){
