@@ -62,12 +62,22 @@
       </div>
     </div>
 
-
-
+<br>
+  <div class="Upload">
+    <label style="display: block">Images for Galler:</label>
+    <input type="file" accept=".jpg,.png,.gif" (change)="onGallChange($event)" multiple class="form-control" id="gallerInput"  placeholder="Search for..." required>
+    <button class="btn btn-warning" type="button" (click)="uploadGallery();setClicked()"> Upload file </button>
+    <div *ngIf="completed==false &&clicked==true &&spinner==true" id="progresscircle2">
+      <md-progress-circle  class="md-progress" mode="indeterminate" ></md-progress-circle>
+    </div>
+    <div *ngIf="(completed==true && showMessage==true)" >
+      <p-growl id="growl2" life="4000" [value]="msgs"></p-growl>
+    </div>
+  </div>
+  <a>{{image}}</a>
 <br>
 
 
-  <button pButton type="submit" [disabled]="!formData.valid|| clicked==false" (click)="console.log('Success')" id="buttonSubmit" label="Submit"></button>
   <br>
 
 </form>
@@ -75,6 +85,8 @@
 
 
 
+
+  <button pButton type="submit" [disabled]="!formData.valid|| clicked==false" (click)="console.log('Success')" id="buttonSubmit" label="Submit"></button>
 
 <br> <br> <br>
 

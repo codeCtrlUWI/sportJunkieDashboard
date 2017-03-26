@@ -16,7 +16,6 @@ import { MaterialModule } from '@angular/material';
 import { DashRoutingModule} from './dashboard-routing.module';
 import {AuthGuard} from "../auth/auth-guard.service";
 import { CKEditorModule } from 'ng2-ckeditor';
-import {AddArticleModule} from "../add-article/add-article.module"
 import { ListArticleComponent } from '../list-article/list-article.component';
 import { ViewArticleComponent } from '../view-article/view-article.component';
 import { EditArticleComponent } from '../edit-article/edit-article.component';
@@ -26,10 +25,12 @@ import {ButtonModule} from 'primeng/primeng';
 import {PanelModule} from 'primeng/primeng';
 import {GrowlModule} from 'primeng/primeng';
 import { ArticleService } from './article.service';
-
-
-
+import {ModalModule} from 'angular2-modal';
+import { BootstrapModalModule } from 'angular2-modal/plugins/bootstrap';
 import {AddArticleComponent} from "../add-article/add-article.component";
+
+
+
 @NgModule({
   imports:[
     CommonModule,
@@ -42,6 +43,8 @@ import {AddArticleComponent} from "../add-article/add-article.component";
     GrowlModule,
     ButtonModule,
     PanelModule,
+    ModalModule.forRoot(),
+    BootstrapModalModule,
     EditorModule,
     SharedModule,
     CKEditorModule,

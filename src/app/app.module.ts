@@ -17,7 +17,8 @@ import { EditorModule, SharedModule } from 'primeng/primeng';
 import { CKEditorModule } from 'ng2-ckeditor';
 import {PanelModule} from 'primeng/primeng';
 import {AuthGuard} from "./auth/auth-guard.service";
-
+import {ModalModule} from 'angular2-modal';
+import { BootstrapModalModule } from 'angular2-modal/plugins/bootstrap';
 
 
 
@@ -49,6 +50,8 @@ export const firebaseAuthConfig ={
     MaterialModule.forRoot(),
     ButtonModule,
     PanelModule,
+    ModalModule.forRoot(),
+    BootstrapModalModule,
     //QuillModule,
     CKEditorModule,
     InputTextModule,
