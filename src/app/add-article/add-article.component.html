@@ -74,11 +74,12 @@
       <p-growl id="growl2" life="4000" [value]="msgs"></p-growl>
     </div>
   </div>
-  <a>{{image}}</a>
+
 <br>
 
 
   <br>
+  <button pButton type="submit" [disabled]="!formData.valid|| clicked==false" (click)="console.log('Success')" id="buttonSubmit" label="Submit"></button>
 
 </form>
 
@@ -86,7 +87,7 @@
 
 
 
-  <button pButton type="submit" [disabled]="!formData.valid|| clicked==false" (click)="console.log('Success')" id="buttonSubmit" label="Submit"></button>
+
 
 <br> <br> <br>
 

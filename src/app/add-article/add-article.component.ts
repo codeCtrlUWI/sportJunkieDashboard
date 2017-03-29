@@ -46,6 +46,7 @@ export class AddArticleComponent {
   angularFireState;
   galleryId;
   gallery: any[] = [];
+  fbGalleryLinks={};
 
   msgs: Message[] = [];
 
@@ -133,52 +134,106 @@ export class AddArticleComponent {
   }
 
 
-  uploadGallery() {
-
-    for (var i = 0; i < this.gallery.length; i++) {
-      this.storage = firebase.storage().ref();
-      this.path = "Article Images/" + this.email + "-" + this.uid + "-" + this.uuid+"-image"+i;
-      this.storageref = this.storage.child(this.path);
-      var that = this;
-      var uploadTask = this.storageref.putString(this.gallery[i], 'data_url');
-
-      uploadTask.on('state_changed', function (snapshot) {
-        // Observe state change events such as progress, pause, and resume
-        // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
-        var progress = Math.floor((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
-        that.progress = progress;
-        that.spinner = true;
-        that.showMessage = true;
-        if (progress == 100) {
-          that.completed = true;
-          that.spinner = false;
-
-          setTimeout(function () {
-            that.showMessage = false;
-            that.completed = false;
-          }, 3000);
-        }
-        console.log('Upload is ' + progress + '% done');
-        switch (snapshot.state) {
-          case firebase.storage.TaskState.PAUSED: // or 'paused'
-            console.log('Upload is paused');
-            break;
-          case firebase.storage.TaskState.RUNNING: // or 'running'
-            console.log('Upload is running');
-            break;
-        }
-      }, function (error) {
-        // Handle unsuccessful uploads
-      }, function () {
-        // Handle successful uploads on complete
-        // For instance, get the download URL: https://firebasestorage.googleapis.com/...
-        var imglink = uploadTask.snapshot.downloadURL;
-        console.log(imglink);
-        this.gallery[i] = imglink;
-      })
-
-    }
+  creatFBRef(fbLinks){
     let obj={};
+
+     fbLinks.forEach(function(link,pos){
+       obj[pos]=link;
+     })
+
+
+
+    console.log(fbLinks);
+    console.log(obj);
+    this.galleries.push(obj).then(
+      (gallery)=>{
+        console.log(gallery.key);
+        this.galleryId=gallery.key;
+      });
+
+  }
+
+  firebaseUploadTask(i,object){
+    this.storage = firebase.storage().ref();
+    this.path = "Article Images/" + this.email + "-" + this.uid + "-" + this.uuid+"-image"+i;
+    this.storageref = this.storage.child(this.path);
+    var that = this;
+    var uploadTask = this.storageref.putString(this.gallery[i], 'data_url');
+
+    uploadTask.on('state_changed', function (snapshot) {
+      // Observe state change events such as progress, pause, and resume
+      // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+      var progress = Math.floor((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+      that.progress = progress;
+      that.spinner = true;
+      that.showMessage = true;
+      if (progress == 100) {
+        that.completed = true;
+        that.spinner = false;
+
+        setTimeout(function () {
+          that.showMessage = false;
+          that.completed = false;
+        }, 3000);
+      }
+      console.log('Upload is ' + progress + '% done');
+      switch (snapshot.state) {
+        case firebase.storage.TaskState.PAUSED: // or 'paused'
+          console.log('Upload is paused');
+          break;
+        case firebase.storage.TaskState.RUNNING: // or 'running'
+          console.log('Upload is running');
+          break;
+      }
+    }, function (error) {
+      // Handle unsuccessful uploads
+    }, function () {
+
+      // Handle successful uploads on complete
+      // For instance, get the download URL: https://firebasestorage.googleapis.com/...
+      var imglink = uploadTask.snapshot.downloadURL;
+      console.log(imglink);
+      object[i]=imglink;
+      //arrToObj(i,obj,imglink)
+      //console.log(obj)
+      //newLinks.push(imglink);
+    })
+  }
+  sendToFB(){
+    let obj={};
+    var newLinks=[];
+    for (var i = 0; i < this.gallery.length; i++) {
+      this.firebaseUploadTask(i,obj);
+    }
+    console.log(obj);
+    this.galleries.push(obj).then(
+      (gallery)=>{
+        console.log(gallery.key);
+
+        this.galleryId=gallery.key;
+
+      });
+    console.log(obj);
+    this.fbGalleryLinks=obj;
+    console.log(this.fbGalleryLinks);
+
+
+
+
+  }
+
+
+
+
+  uploadGallery() {
+        this.sendToFB();
+
+
+
+
+
+
+    /*let obj={};
     this.gallery.forEach(function(data,i){
       obj[i]=this.gallery[i]
     })
@@ -188,7 +243,7 @@ export class AddArticleComponent {
         console.log(gallery.key)
         this.galleryId=gallery.key;
       });
-
+*/
 
   }
 
@@ -207,7 +262,9 @@ export class AddArticleComponent {
 
 
 
-    UploadFile(){
+
+
+  UploadFile(){
 
         this.storage =firebase.storage().ref();
         this.path = "Profile Pictures/"+this.email+"-"+this.uid+"-"+this.uuid;
@@ -275,8 +332,14 @@ export class AddArticleComponent {
         }).then
         (
             (item)=>{
+
                 console.log(item.key);
                 const itemkey= item.key;
+                const galkey=this.galleryId
+                console.log(this.galleryId)
+                let updates={};
+                updates['/GALLERY/'+this.galleryId]=this.fbGalleryLinks;
+                firebase.database().ref().update(updates);
                 this.articleObject= this.angularFireState.database.object('/ARTICLES/'+itemkey);
                 this.articleObject.update({articleID:itemkey});
 
