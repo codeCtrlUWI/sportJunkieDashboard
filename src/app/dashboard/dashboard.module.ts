@@ -28,6 +28,7 @@ import { ArticleService } from './article.service';
 import {ModalModule} from 'angular2-modal';
 import { BootstrapModalModule } from 'angular2-modal/plugins/bootstrap';
 import {AddArticleComponent} from "../add-article/add-article.component";
+import { ScoreBoardComponent } from '../score-boards/score-board.component';
 
 
 
@@ -67,7 +68,8 @@ import {AddArticleComponent} from "../add-article/add-article.component";
     ListArticleComponent,
     AddArticleComponent,
     ViewArticleComponent,
-    EditArticleComponent
+    EditArticleComponent,
+    ScoreBoardComponent,
 
 
   ]

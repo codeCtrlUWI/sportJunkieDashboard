@@ -1,0 +1,118 @@
+
+<div class="ui-overlaypanel-content" style="margin-top: 58px; height:210px; width: 100%; text-align: center; background-color: #cccccc" >
+  <br>
+
+
+  <button md-fab style="float: left;" (click)="listArticles()">
+    <md-icon  >add</md-icon>
+    <p>Articles</p>
+  </button>
+  <form>
+  <div class="center" style="width: 30%;" >
+    <label for="exampleSelect1">Select Category:</label>
+    <select class="form-control" id="exampleSelect1" #dropdrown (change)="categoryChange(dropdrown)"  required>
+      <option disabled selected value>--Choose an Option-- </option>
+      <option >Football</option>
+      <option>Cricket</option>
+      <option>Swimming</option>
+    </select>
+  </div>
+    <div *ngIf="category=='Football'">
+      <form #formData='ngForm' (ngSubmit)="createGame(formData)" id="footballForm">
+      <input type="text"  [(ngModel)]="sport.team1" name="team1"> Team 1
+      <input type="number" [(ngModel)]="sport.team1Score" name="team1Score">Enter Score for team 1
+      <input type="text" [(ngModel)]="sport.team2" name="team2"> Team 2
+      <input type="number" [(ngModel)]="sport.team2Score" name="team2Score">Enter Score for team 2
+      <button pButton type="submit" class="ui-button-warning" [disabled]="!formData.valid" label="Submit" id="buttonSubmit2"></button>
+  </form>
+
+    </div>
+
+    <div *ngIf="category=='Cricket'">
+      <form #formData='ngForm' (ngSubmit)="createGame(formData)" id="cricketForm">
+      <input type="text" [(ngModel)]="sport.team1" name="team1"> Team 1
+      <input type="text" [(ngModel)]="sport.team2" name="team2"> Team 2
+      <input type="text" [(ngModel)]="sport.currentBatting" name="batting"> Enter team  currently batting team
+      <input type="text" [(ngModel)]="sport.team1Score" name="team1Score"> Enter score of Team 1
+      <input type="text" [(ngModel)]="sport.team2Score" name="team2Score"> Enter score of Team 1
+        <input type="text" [(ngModel)]="sport.overs" name="overs"> Enter current over
+        <input type="text" [(ngModel)]="sport.totalOvers" name="totalOvers"> Enter total number of overs
+        <button pButton type="submit" class="ui-button-warning" [disabled]="!formData.valid" label="Submit" id="buttonSubmit1"></button>
+      </form>
+
+
+
+
+    </div>
+
+    <div *ngIf="category=='Swimming'">
+
+      <form #formData='ngForm' (ngSubmit)="addSwimmer(formData)" id="swimmerForm">
+        <input id="username" pInputText  type ="text" name="sname" (ngModel)="sname" required placeholder="Enter Swimmer name here...">
+        <input id="password" pInputText type="number"  name="score" placeholder="Enter Score here..." (ngModel)="score">
+        <button pButton type="submit" class="ui-button-warning" [disabled]="!formData.valid" label="Submit" id="buttonSubmit"></button>
+      </form>
+
+
+    </div>
+
+  </form>
+
+
+
+
+</div>
+
+
+<div class="ui-overlaypanel-content" style="margin-top: 120px;">
+  <div class=" col-3 col-sm-4  col-lg-3" *ngFor="let score of scores|async" style="float:left">
+    <md-card *ngIf="score.category=='Football'" style="margin-bottom: 35px" >
+      <md-card-title style="word-wrap: break-word">
+        {{score.team1}} vs {{score.team2}}
+      </md-card-title>
+      <md-card-subtitle>
+
+      </md-card-subtitle>
+
+      <md-card-content>
+        {{score.team1Score}} - {{score.team2Score}}
+        <br>
+        {{score.status}}
+      </md-card-content>
+
+      <md-card-actions layout="row" layout-align="end center">
+
+      </md-card-actions>
+
+    </md-card>
+
+    <md-card *ngIf="score.category=='Cricket'"  style="margin-bottom: 35px" >
+
+    <md-card-title style="word-wrap: break-word">
+      {{score.team1}} vs {{score.team2}}
+    </md-card-title>
+    <md-card-subtitle>
+
+    </md-card-subtitle>
+
+    <md-card-content >
+      Batting: {{score.batting}}
+      <br>
+      {{score.team1}}: {{score.team1Score}}
+      <br>
+      {{score.team2}}: {{score.team2Score}}
+        <br>
+      {{score.overs}}/{{score.totalOvers}} overs
+
+    </md-card-content>
+
+
+
+    <md-card-actions layout="row" layout-align="end center">
+
+    </md-card-actions>
+
+    </md-card>
+
+  </div>
+</div>

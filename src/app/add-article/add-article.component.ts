@@ -134,7 +134,7 @@ export class AddArticleComponent {
   }
 
 
-  creatFBRef(fbLinks){
+  /*creatFBRef(fbLinks){
     let obj={};
 
      fbLinks.forEach(function(link,pos){
@@ -151,7 +151,7 @@ export class AddArticleComponent {
         this.galleryId=gallery.key;
       });
 
-  }
+  }*/
 
   firebaseUploadTask(i,object){
     this.storage = firebase.storage().ref();

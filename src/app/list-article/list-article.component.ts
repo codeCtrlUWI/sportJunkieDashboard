@@ -52,4 +52,9 @@ export class ListArticleComponent {
     this.router.navigate(['/dashboard/edit', articleId]);
   }
 
+  scoreBoard(){
+    this.router.navigate(['/dashboard/score']);
+  }
+
+
  }
