@@ -8,6 +8,7 @@ import * as firebase from "firebase";
 import {Message} from "primeng/primeng";
 
 
+
 @Component({
   moduleId: module.id,
   selector: 'app-login',
@@ -35,6 +36,7 @@ export class LoginComponent {
 
       );
       this.firebaseApp = firebaseApp;
+
 
 
   }
@@ -94,6 +96,7 @@ export class LoginComponent {
             } else {
                 // No user is signed in.
             }
+
         })
          .catch((error)=>{
             var errorCode= error.code;
