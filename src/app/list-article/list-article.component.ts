@@ -2,7 +2,7 @@
  * Created by dylan on 3/5/17.
  */
 import { Component } from '@angular/core';
-import {AngularFire, FirebaseListObservable} from 'angularfire2';
+import {AngularFire, FirebaseListObservable, FirebaseObjectObservable} from 'angularfire2';
 import {Router} from "@angular/router";
 
 
@@ -32,10 +32,12 @@ export class ListArticleComponent {
 
         this.articles.subscribe(
           val => console.log(val)
+
         );
       }
 
     );
+
 
   }
   addArticle(){
@@ -44,6 +46,14 @@ export class ListArticleComponent {
 
   viewArticle(articleId){
     this.router.navigate(['/dashboard/view',articleId]);
+  }
+
+  editArticle(articleId) {
+    this.router.navigate(['/dashboard/edit', articleId]);
+  }
+
+  scoreBoard(){
+    this.router.navigate(['/dashboard/score']);
   }
 
 

@@ -1,15 +1,23 @@
 
+
 <div class="ui-overlaypanel-content" style="margin-top: 58px; height:210px; width: 100%; text-align: center; background-color: #cccccc" >
   <br>
+  <button md-fab  style="float:left;" (click)="scoreBoard()">
+    <md-icon  >add</md-icon>
+    <p>Scoreboards</p>
+  </button>
   <button md-fab class="add-button" (click)="addArticle()">
-    <md-icon >add</md-icon>
+    <md-icon  >add</md-icon>
   </button>
   <p>Add Article</p>
+
+
+
 
 </div>
 
 <div class="ui-overlaypanel-content" style="margin-top: 120px;">
-  <div class=" col-3 col-sm-4  col-lg-3" *ngFor="let article of articles|async">
+  <div class=" col-3 col-sm-4  col-lg-3" *ngFor="let article of articles|async" style="float:left">
     <md-card  id="eachCard" style="margin-bottom: 35px" >
       <md-card-title style="word-wrap: break-word">
         {{article.title}}
@@ -24,7 +32,7 @@
 
       <md-card-actions layout="row" layout-align="end center">
         <button (click)="viewArticle(article.articleID)">View</button>
-        <button >Edit</button>
+        <button (click)="editArticle(article.articleID)">Edit</button>
       </md-card-actions>
 
     </md-card>

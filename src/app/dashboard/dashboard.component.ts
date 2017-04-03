@@ -2,7 +2,7 @@
  * Created by dylan on 2/26/17.
  */
 import { Component } from '@angular/core';
-import {AngularFire, FirebaseListObservable} from 'angularfire2';
+import {AngularFire, FirebaseListObservable,FirebaseObjectObservable} from 'angularfire2';
 import {Router} from "@angular/router";
 
 
@@ -14,8 +14,8 @@ import {Router} from "@angular/router";
 })
 
 export class DashboardComponent {
-  articles: FirebaseListObservable<any[]>;
-
+  //articles: FirebaseListObservable<any[]>;
+  article: FirebaseObjectObservable<any>;
   constructor(private af: AngularFire, private router: Router) {
 
   }

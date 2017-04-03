@@ -1,13 +1,20 @@
 <div class="ui-overlaypanel-content" style="margin-top: 120px;">
-  <h1>{{article.title}}</h1>
-  <h3>{{article.subtitle}}</h3>
-  <a>Author: </a>
-  <a>{{article.authorFname}} </a>
-  <a>{{article.authorLname}}</a>
-  <br>
-  <a>{{article.category}}</a>
-  <br>
-  <a>{{article.articleData}}</a>
+  <button md-fab class="back-button" (click)="goBack()">
+    <i class="material-icons" style="font-size: 40px">arrow_back</i>
+  </button>
+  <p-panel *ngIf="article" >
+    <p-header>
+      <img src={{article.urlToImage}} style="width: 100%; height: 400px">
+      <h1 >{{article.title }}</h1>
+
+      <a >{{article.category }}</a>
+    </p-header>
+
+
+
+      <a >{{article.articleData }}</a>
+
+  </p-panel>
 
 
 </div>

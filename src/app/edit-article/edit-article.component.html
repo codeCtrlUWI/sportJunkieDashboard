@@ -1,0 +1,20 @@
+<div class="ui-overlaypanel-content" style="margin-top: 120px;">
+  <button md-fab class="back-button" (click)="goBack()">
+    <i class="material-icons" style="font-size: 40px">arrow_back</i>
+  </button>
+  <h1 *ngIf="article">{{article.title }}</h1>
+  <h3 *ngIf="article">{{article.subtitle }}</h3>
+  <a>Author: </a>
+  <a *ngIf="article">{{article.authorFname}} </a>
+  <a *ngIf="article">{{article.authorLname }}</a>
+  <br>
+  <a *ngIf="article">{{article.category }}</a>
+  <br>
+
+  <form #formData='ngForm' (ngSubmit)="onSubmit(formData)" id="form">
+  <textarea id="data" name="articleText" rows="9" cols="140" pInputTextarea *ngIf="article" [(ngModel)]="article.articleData" > </textarea>
+    <button pButton type="submit" class="ui-button-warning" [disabled]="!formData.valid" label="Submit" id="buttonSubmit"></button>
+  </form>
+
+
+</div>

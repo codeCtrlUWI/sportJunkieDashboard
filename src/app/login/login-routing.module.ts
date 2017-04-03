@@ -11,7 +11,7 @@ const loginRoutes: Routes =[
 ];
 
 @NgModule({
-  imports: [ RouterModule.forChild(loginRoutes)],
+  imports: [ RouterModule.forRoot(loginRoutes)],
   exports: [RouterModule],
   providers: [AuthGuard]
 })
