@@ -21,7 +21,6 @@ export class ScoreBoardComponent {
   category: String;
   sport;
   scores: FirebaseListObservable<any[]>;
-  scoreUpdates: FirebaseObjectObservable<any>;
 
 
   constructor(private af: AngularFire, private router: Router) {
@@ -96,13 +95,6 @@ listArticles(){
 
 
 
-  }
-
-  update(formData, key){
-    console.log(formData.value);
-    console.log(key);
-    this.scoreUpdates=this.af.database.object('SCORES/'+key+'/');
-    this.scoreUpdates.update(formData.value);
   }
 
 }

@@ -75,21 +75,9 @@
       </md-card-subtitle>
 
       <md-card-content>
-
-        <form #formData='ngForm' (ngSubmit)="update(formData,score.$key)" id="footballUpdateForm">
-
-          <input id="t1FScore" pInputText type="number"  name="team1Score" [(ngModel)]="score.team1Score">-
-          <input id="t2FScore" pInputText type="number"  name="team2Score" [(ngModel)]="score.team2Score">
-          <input id="gameStatus" pInputText type="text"  name="status" [(ngModel)]="score.status">
-
-           
-          <br>
-          <button pButton type="submit" class="ui-button-warning" [disabled]="!formData.valid" label="Update" ></button>
-
-        </form>
-
+        {{score.team1Score}} - {{score.team2Score}}
         <br>
-
+        {{score.status}}
       </md-card-content>
 
       <md-card-actions layout="row" layout-align="end center">
@@ -108,22 +96,13 @@
     </md-card-subtitle>
 
     <md-card-content >
-
-      <form #formData='ngForm' (ngSubmit)="update(formData,score.$key)" id="cricketUpdateForm">
-        Batting: {{score.batting}}
-        <input id="currBatting" pInputText  type ="text" name="batting" [(ngModel)]="score.batting" >
-        {{score.team1}}:
-        <input id="t1CScore" pInputText type="text"  name="team1Score" [(ngModel)]="score.team1Score">
-        {{score.team2}}:
-        <input id="t2CScore" pInputText type="text"  name="team2Score" [(ngModel)]="score.team2Score">
-        <input id="overs" pInputText type="number" name="overs" [(ngModel)]="score.overs">/{{score.totalOvers}} overs
+      Batting: {{score.batting}}
+      <br>
+      {{score.team1}}: {{score.team1Score}}
+      <br>
+      {{score.team2}}: {{score.team2Score}}
         <br>
-        <button pButton type="submit" class="ui-button-warning" [disabled]="!formData.valid" label="Update" ></button>
-
-      </form>
-
-
-
+      {{score.overs}}/{{score.totalOvers}} overs
 
     </md-card-content>
 
