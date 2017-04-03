@@ -9,7 +9,7 @@
 
 }
 .logoutButton:hover {
-    background-color: dodgerblue;
+    background-color: red;
     color: black;
 }
 
@@ -79,4 +79,13 @@ md-grid-tile figure {
 
 ::-webkit-scrollbar-thumb{
     background: red;
+}
+
+.navbar{
+    background: rgb(170, 0, 0);
+    background: -moz-linear-gradient(35deg, rgb(170, 0, 0) 23%, rgb(0, 0, 0) 70%);
+    background: -webkit-linear-gradient(35deg, rgb(170, 0, 0) 23%, rgb(0, 0, 0) 70%);
+    background: -o-linear-gradient(35deg, rgb(170, 0, 0) 23%, rgb(0, 0, 0) 70%);
+    background: -ms-linear-gradient(35deg, rgb(170, 0, 0) 23%, rgb(0, 0, 0) 70%);
+    background: linear-gradient(125deg, rgb(170, 0, 0) 23%, rgb(0, 0, 0) 70%);
 }

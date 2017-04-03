@@ -1,12 +1,13 @@
 import {Component, NgZone, Inject, EventEmitter, OnInit} from '@angular/core';
 import {AngularFire, FirebaseListObservable, FirebaseApp, FirebaseObjectObservable} from 'angularfire2';
 import {Router} from "@angular/router";
-
+import {SelectItem} from 'primeng/primeng'
 
 import * as firebase from "firebase";
 import { UUID } from 'angular2-uuid';
 import {Message} from 'primeng/primeng';
 import {Location} from '@angular/common';
+declare var $: any;
 
 
 @Component({
@@ -18,11 +19,10 @@ import {Location} from '@angular/common';
 export class AddArticleComponent {
 
   articles: FirebaseListObservable<any[]>;
-  galleries: FirebaseListObservable<any[]>
+  galleries: FirebaseListObservable<any[]>;
   users: FirebaseListObservable<any[]>;
   user: FirebaseObjectObservable<any>;
   articleObject: FirebaseObjectObservable<any>;
-  galleryObject: FirebaseObjectObservable<any>;
 
 
   numberOfClicks;
@@ -33,7 +33,7 @@ export class AddArticleComponent {
   imageLink;
   uid;
   file;
-  progress;
+  progress=0;
   clicked;
   email;
   uuid;
@@ -47,14 +47,32 @@ export class AddArticleComponent {
   galleryId;
   gallery: any[] = [];
   fbGalleryLinks={};
+  galleryFile;
+    progressGall=0;
+    selectedCategoryName;
 
-  msgs: Message[] = [];
+
+
+    categories: SelectItem[];
+
+    selectedCategory: string;
+
+
+    msgs: Message[] = [];
 
 
   constructor(private location: Location, private af: AngularFire, private router: Router, @Inject(FirebaseApp) firebaseApp: any) {
 
+
+      this.categories = [];
+      this.categories.push({label:'Cricket', value:{id:1, name: 'Cricket', code: 'C'}});
+      this.categories.push({label:'Football', value:{id:2, name: 'Football', code: 'F'}});
+      this.categories.push({label:'Swimming', value:{id:3, name: 'Swimming', code: 'S'}});
+
+
+
     this.articles = af.database.list('/ARTICLES');
-    this.galleries = af.database.list('/GALLERY')
+    this.galleries = af.database.list('/GALLERY');
 
     this.numberOfClicks = 0;
 
@@ -93,14 +111,8 @@ export class AddArticleComponent {
       });
 
 
-    this.completed = false;
-    this.clicked = false;
-    this.showMessage = true;
-    this.spinner = true;
 
-    setTimeout(() => {
-      this.msgs.push({severity: 'success', summary: 'Hooray', detail: 'Upload Completed!'});
-    }, 0);
+
 
   }
 
@@ -110,24 +122,34 @@ export class AddArticleComponent {
     let target: HTMLInputElement = <HTMLInputElement> eventObj.target;
     let files: FileList = target.files;
     this.file = files[0];
+      var reader = new FileReader();
 
-
+      reader.onload = function (e:any) {
+          $('#blah')
+              .attr('src', e.target.result)
+              .width(120)
+              .height(80);
+      };
+      reader.readAsDataURL(this.file);
   };
+
 
   onGallChange(event: EventTarget) {
     let eventObj: MSInputMethodContext = <MSInputMethodContext> event;
     let target: HTMLInputElement = <HTMLInputElement> eventObj.target;
     let tempGal: FileList = target.files;
+      let files: FileList = target.files;
+      this.galleryFile= files[0];
     let reader = new FileReader();
 
     reader.onload = (e: any) => {
       this.gallery.push(e.target.result);
-    }
+    };
 
     reader.readAsDataURL(target.files[0]);
     //this.gallery.push(tempGal[0])
 
-    console.log(this.gallery)
+    console.log(this.gallery);
 
     //
     // input.value = files.map(f => f.name).join(', ');
@@ -164,18 +186,7 @@ export class AddArticleComponent {
       // Observe state change events such as progress, pause, and resume
       // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
       var progress = Math.floor((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
-      that.progress = progress;
-      that.spinner = true;
-      that.showMessage = true;
-      if (progress == 100) {
-        that.completed = true;
-        that.spinner = false;
-
-        setTimeout(function () {
-          that.showMessage = false;
-          that.completed = false;
-        }, 3000);
-      }
+      that.progressGall = progress;
       console.log('Upload is ' + progress + '% done');
       switch (snapshot.state) {
         case firebase.storage.TaskState.PAUSED: // or 'paused'
@@ -267,7 +278,7 @@ export class AddArticleComponent {
   UploadFile(){
 
         this.storage =firebase.storage().ref();
-        this.path = "Profile Pictures/"+this.email+"-"+this.uid+"-"+this.uuid;
+        this.path = "Article Images/"+this.email+"-"+this.uid+"-"+this.uuid;
         this.storageref = this.storage.child(this.path);
         this.imageLink= "";
 
@@ -280,17 +291,6 @@ export class AddArticleComponent {
             // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
             var progress = Math.floor((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
             that.progress= progress;
-            that.spinner=true;
-            that.showMessage=true;
-            if (progress==100){
-                that.completed=true;
-                that.spinner=false;
-
-                setTimeout(function () {
-                    that.showMessage=false;
-                    that.completed=false;
-                },3000);
-            }
             console.log('Upload is ' + progress + '% done');
             switch (snapshot.state) {
                 case firebase.storage.TaskState.PAUSED: // or 'paused'
@@ -308,25 +308,33 @@ export class AddArticleComponent {
             var imglink = uploadTask.snapshot.downloadURL;
             console.log(imglink);
             that.imageLink= imglink;
+
+            that.msgs=[];
+            that.msgs.push({severity: 'success', summary: 'Hooray', detail: 'Upload Completed!'});
         });
     }
 
 
 
-    onSubmit(this, formData:any, event:Event,)
+    onSubmit(formData:any, event:Event)
     {
+        var today = new Date();
+        var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+        var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+        var dateTime = date+' '+time;
+
         event.preventDefault();
         this.newObject= this.articles.push({
             title: formData.value.title,
             authorUID: this.uid,
             urlToImage: this.imageLink,
-            category: this.category,
+            category: this.selectedCategoryName,
             articleData: formData.value.data,
             subtitle: formData.value.subTitle,
             authorFname: this.firstName,
             authorLname: this.lastName,
-            timeAndDateCreated: Date.now(),
-            lastUpdated: "Today",
+            timeAndDateCreated: dateTime,
+            lastUpdated: dateTime,
             numberOfClicks: this.numberOfClicks,
             galleryID: this.galleryId,
         }).then
@@ -335,8 +343,8 @@ export class AddArticleComponent {
 
                 console.log(item.key);
                 const itemkey= item.key;
-                const galkey=this.galleryId
-                console.log(this.galleryId)
+                const galkey=this.galleryId;
+                console.log(this.galleryId);
                 let updates={};
                 updates['/GALLERY/'+this.galleryId]=this.fbGalleryLinks;
                 firebase.database().ref().update(updates);
@@ -347,17 +355,17 @@ export class AddArticleComponent {
     }
 
 
-    setClicked(this,event:Event){
-        this.clicked= true;
+    growl(){
+        this.msgs=[];
+        this.msgs.push({severity: 'warn', summary: 'Upload in progress...', detail: 'Please Wait...'});
     }
 
-    categoryChange(this,dropdown){
-        this.category= dropdown.value;
+    changeCategory(categoryName){
+
+        this.selectedCategoryName=categoryName;
+        console.log(this.selectedCategoryName);
     }
 
-    changeCompleted(){
-        this.completed=false;
-    }
 
     goBack(){
         this.location.back();

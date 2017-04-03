@@ -1,12 +1,19 @@
 <div class="container-fluid" style="margin-top: 100px">
-<div class="row">
-  <button md-fab class="back-button" (click)="goBack()">
-  <i class="material-icons" style="font-size: 40px">arrow_back</i>
-  </button>
+
+  <div style="top:50%;position: fixed" class="buttonContainer  hvr-wobble-horizontal">
+    <button md-fab class="back-button" (click)="goBack()">
+      <i class="material-icons" style="font-size: 28px;top: 50%">arrow_back</i>
+    </button>
+  </div>
+  <div style="z-index: 10000;position: absolute;left: 50%" id="message"><p-growl [style]="{'margin-top':'65px'}"   [value]="msgs"></p-growl></div>
+<div style="margin-left: 8%" class="row">
+
+
+
 <form #formData='ngForm' (ngSubmit)="onSubmit(formData, $event)" id="form" xmlns="http://www.w3.org/1999/html">
 
   <div class="form-group" style="width: 50%">
-    <label for="title">Title:</label>
+    <label style="font-size: 20px; font-family: 'Open Sans'" for="title">Title:</label>
     <textarea rows="2" cols="70" id="title" name="title" (ngModel)="title" pInputTextarea required></textarea>
   </div>
 
@@ -15,8 +22,8 @@
 
 
 
-  <div class="form-group" style="width: 50%">
-     <label for="data" >Data:</label>
+  <div class="form-group" style="width: 50%;margin-top: 5%">
+     <label style="font-size: 20px; font-family: 'Open Sans'" for="data" > Article:</label>
     <textarea rows="9" cols="140" id="data" name="data" (ngModel)="data" pInputTextarea required></textarea>
   </div>
 
@@ -26,20 +33,16 @@
 
 
 
-  <div class="form-group" style="width: 50%">
-    <label style="display: block" for="subTitle">Subtitle:</label>
+  <div class="form-group" style="width: 50%;margin-top: 5%">
+    <label style="display: block;font-size: 20px; font-family: 'Open Sans'" for="subTitle">Subtitle:</label>
     <textarea rows="2" cols="70" id="subTitle" name="subTitle" (ngModel)="subTitle" pInputTextarea required></textarea>
   </div>
 
 
-  <div class="form-group" style="width: 30%">
-    <label for="exampleSelect1">Select Category:</label>
-    <select class="form-control" id="exampleSelect1" #dropdrown (change)="categoryChange(dropdrown)"  required>
-      <option disabled selected value>--Choose an Option-- </option>
-      <option >Football</option>
-      <option>Cricket</option>
-      <option>Swimming</option>
-    </select>
+  <div style="width: 70%;margin-top: 5%" class="form-group">
+    <label style="display: block;font-size: 20px; font-family: 'Open Sans'" for="selectedCategory">Category:</label>
+    <p-dropdown id="selectedCategory"  [style]="{'width':'300px'}"  [options]="categories" [(ngModel)]="selectedCategory" name="selectedCategory" required="true" placeholder="Select a category..."  (onChange)="changeCategory($event.value.name)"></p-dropdown>
+    <p style="display: inline-block;margin-left: 30px">Selected Category: {{selectedCategory ? selectedCategory.name : 'none'}}</p>
   </div>
 
   {{category}}
@@ -51,35 +54,35 @@
 
 
     <div class="Upload">
-      <label style="display: block">Image for Article:</label>
+      <label style="display: block;font-size: 20px;font-family: 'Open Sans' ">Image for Article:</label>
       <input type="file" accept=".jpg,.png,.gif" (change)="onChange($event)" class="form-control" id="fileInput"  placeholder="Search for..." required>
-      <button class="btn btn-warning" type="button" [disabled]="!file" (click)="UploadFile();setClicked()"> Upload file </button>
-      <div *ngIf="completed==false &&clicked==true &&spinner==true" id="progresscircle">
+      <button class="btn btn-danger" type="button" [disabled]="!file" (click)="UploadFile();growl()"> Upload file </button>
+      <div *ngIf="progress!=0 && progress!=100 &&file!=null" id="progresscircle">
         <md-progress-circle  class="md-progress" mode="indeterminate" ></md-progress-circle>
       </div>
-      <div *ngIf="(completed==true && showMessage==true)" >
-        <p-growl id="growl" life="4000" [value]="msgs"></p-growl>
+      <p *ngIf="progress!=0 && progress!=100 &&file!=null" style="display: inline-block;margin-left: 100px">Upload in progress...</p>
+      <img *ngIf="file!=null" style="display: inline-block;margin-left: 50px" id="blah" src="#" alt="your image" />
       </div>
-    </div>
+
+<br>
+
 
 <br>
   <div class="Upload">
-    <label style="display: block">Images for Galler:</label>
-    <input type="file" accept=".jpg,.png,.gif" (change)="onGallChange($event)" multiple class="form-control" id="gallerInput"  placeholder="Search for..." required>
-    <button class="btn btn-warning" type="button" (click)="uploadGallery();setClicked()"> Upload file </button>
-    <div *ngIf="completed==false &&clicked==true &&spinner==true" id="progresscircle2">
+    <label style="display: block;font-size: 20px;font-family: 'Open Sans'">Images for Gallery:</label>
+    <input type="file" accept=".jpg,.png,.gif" (change)="onGallChange($event)" multiple class="form-control" id="gallerInput"  placeholder="Search for..." >
+    <button class="btn btn-danger" type="button" [disabled]="!galleryFile" (click)="uploadGallery();growl()"> Upload file </button>
+    <div *ngIf="progressGall!=0 && progressGall!=100 &&galleryFile!=null" id="progresscircle2">
       <md-progress-circle  class="md-progress" mode="indeterminate" ></md-progress-circle>
     </div>
-    <div *ngIf="(completed==true && showMessage==true)" >
-      <p-growl id="growl2" life="4000" [value]="msgs"></p-growl>
-    </div>
+    <p *ngIf="progressGall!=0 && progressGall!=100 &&galleryFile!=null" style="display: inline-block;margin-left: 100px">Upload in progress...</p>
   </div>
 
-<br>
+
 
 
   <br>
-  <button pButton type="submit" [disabled]="!formData.valid|| clicked==false" (click)="console.log('Success')" id="buttonSubmit" label="Submit"></button>
+  <button md-raised-button style="font-family: 'Audiowide',bold" type="submit" [disabled]="!formData.valid || progress!=0 && progress!=100 || progressGall!=0 && progressGall!=100" id="buttonSubmit">Submit</button>
 
 </form>
 
@@ -93,4 +96,5 @@
 
 
 </div>
+
 </div>
