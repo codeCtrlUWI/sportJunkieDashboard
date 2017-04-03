@@ -1,0 +1,33 @@
+<div id="mainContainer" style="position: fixed;overflow-x: hidden!important;" class="container-fluid">
+
+</div>
+
+<div class="container-fluid">
+  <div  class="row justify-content-md-center" >
+      <div class="col col-4 col-sm-4 col-md-4" ></div>
+        <div class="col col-4 col-sm-4 col-md-4">
+
+          <md-card style="align-content: center" class="MainCard">
+            <md-card-content style="align-content: center">
+                <h6 style="font-family: 'Audiowide',cursive;font-size: 40px;text-align: center;margin-bottom: 10%">SportJunkie™ Author Dashboard</h6>
+              <form #formData='ngForm' (ngSubmit)="onSubmit(formData)" id="form">
+                <input style="width: 50%" id="username" pInputText  type ="text" name="email" (ngModel)="email" required placeholder="Enter Email here...">
+                <input style="width: 50%" id="password" pInputText type="password"  name="password" placeholder="Enter Password here..." (ngModel)="password" required>
+                <button  md-raised-button  style="margin-left: 37%;width: 30px!important;color: white; margin-top:5%;font-size: 16px;font-family:'Audiowide',cursive"  class="signinbutton" [disabled]="!formData.valid">Sign in</button>
+              </form>
+              <hr class="horizontal1">
+              <div class="btn btn-block btn-social btn-google" style="width: 40%;margin-left: 30.2%" (click)="googleSignin($event)">
+                <span class="fa fa-google"></span>
+                <h6 style="margin-left: 6%">Sign in with Google</h6>
+              </div>
+            </md-card-content>
+          </md-card>
+        </div>
+          <div class="col col-4 col-sm-4 col-md-4" >
+          </div>
+
+  </div>
+</div>
+  <div style="z-index: 10000;position: absolute" id="message"><p-growl  [value]="msgs"></p-growl></div>
+<router-outlet></router-outlet>
+

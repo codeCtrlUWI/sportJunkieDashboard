@@ -1,0 +1,52 @@
+#buttonSubmit{
+    margin-top: 10px;
+    left: 25%;
+    width: 8%;
+    height: 40px;
+    margin-bottom: 90px;
+}
+
+#growl{
+    width:50px
+}
+
+.md-progress{
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+}
+
+#progresscircle{
+    display: inline-block;
+    position: absolute;
+    margin-left: 30px;
+    padding: 3px;
+}
+
+.btn-warning{
+    display: inline-block;
+    margin-left: 40px;
+}
+
+#fileInput{
+    display: inline-block;
+    width: 40%;
+}
+
+#form{
+    margin-top: 50px;
+    margin-left: 40px;
+}
+
+.back-button {
+  height:80px;
+  width: 80px;
+  background-color: #cccccc;
+  color: white;
+
+}
+
+.back-button:hover{
+  background-color: red;
+}
+
