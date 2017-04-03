@@ -15,7 +15,6 @@ import { DashboardComponent } from './dashboard.component';
 import { MaterialModule } from '@angular/material';
 import { DashRoutingModule} from './dashboard-routing.module';
 import {AuthGuard} from "../auth/auth-guard.service";
-import { CKEditorModule } from 'ng2-ckeditor';
 import { ListArticleComponent } from '../list-article/list-article.component';
 import { ViewArticleComponent } from '../view-article/view-article.component';
 import { EditArticleComponent } from '../edit-article/edit-article.component';
@@ -23,9 +22,10 @@ import {InputTextareaModule} from 'primeng/primeng';
 import {DialogModule} from 'primeng/primeng';
 import {ButtonModule} from 'primeng/primeng';
 import {PanelModule} from 'primeng/primeng';
-import {GrowlModule} from 'primeng/primeng';
 import { ArticleService } from './article.service';
 import {ModalModule} from 'angular2-modal';
+import {GrowlModule} from 'primeng/primeng';
+
 import { BootstrapModalModule } from 'angular2-modal/plugins/bootstrap';
 import {AddArticleComponent} from "../add-article/add-article.component";
 import { ScoreBoardComponent } from '../score-boards/score-board.component';
@@ -48,9 +48,8 @@ import { ScoreBoardComponent } from '../score-boards/score-board.component';
     BootstrapModalModule,
     EditorModule,
     SharedModule,
-    CKEditorModule,
     DataScrollerModule,
-    DashRoutingModule
+    DashRoutingModule,
       ],
 
   exports: [
