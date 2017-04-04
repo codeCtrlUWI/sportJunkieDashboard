@@ -32,9 +32,11 @@ export class ListArticleComponent {
         articleref.orderByChild("authorUID").on("value",function(data) {
             rArray=[];
             data.forEach(function(snapshot) {
-                let articleData= snapshot.val();
-                rArray.push(articleData);
-                return false;
+                if(snapshot.val().authorUID==uid){
+                    let articleData= snapshot.val();
+                    rArray.push(articleData);
+                    return false;
+                }
             });
             console.log(rArray);
             that.articles= rArray;
