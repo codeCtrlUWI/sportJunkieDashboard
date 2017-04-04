@@ -1,8 +1,10 @@
-<div id="mainContainer" style="position: fixed;overflow-x: hidden!important;" class="container-fluid">
+<div style="position: fixed;overflow-x: hidden!important;overflow-y: visible" class="container-fluid">
 
 </div>
 
-<div class="container-fluid">
+
+
+<div style="overflow-x: hidden;overflow-y:hidden;height: 100%!important;" class="forCard" id="everything">
   <div  class="row justify-content-md-center" >
       <div class="col col-4 col-sm-4 col-md-4" ></div>
         <div class="col col-4 col-sm-4 col-md-4">
@@ -28,6 +30,7 @@
 
   </div>
 </div>
-  <div style="z-index: 10000;position: absolute" id="message"><p-growl  [value]="msgs"></p-growl></div>
-<router-outlet></router-outlet>
 
+
+<div style="z-index: 10000;position: absolute" id="message"><p-growl  [value]="msgs"></p-growl></div>
+<router-outlet></router-outlet>

@@ -7,11 +7,11 @@ import { LoginComponent } from './login.component';
 
 import { AuthGuard } from 'app/auth/auth-guard.service';
 const loginRoutes: Routes =[
-  {path: 'login', component: LoginComponent }
+  {path: 'login', component: LoginComponent}
 ];
 
 @NgModule({
-  imports: [ RouterModule.forRoot(loginRoutes)],
+  imports: [ RouterModule.forChild(loginRoutes)],
   exports: [RouterModule],
   providers: [AuthGuard]
 })
