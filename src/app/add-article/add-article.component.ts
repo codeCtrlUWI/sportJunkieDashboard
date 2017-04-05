@@ -48,6 +48,7 @@ export class AddArticleComponent {
   gallery: any[] = [];
   fbGalleryLinks={};
   galleryFile;
+  hasGallery=false;
     progressGall=0;
     selectedCategoryName;
 
@@ -213,6 +214,7 @@ export class AddArticleComponent {
     })
   }
   sendToFB(){
+
     let obj={};
     var newLinks=[];
     for (var i = 0; i < this.gallery.length; i++) {
@@ -222,12 +224,13 @@ export class AddArticleComponent {
     this.galleries.push(obj).then(
       (gallery)=>{
         console.log(gallery.key);
-
+        this.hasGallery=true;
         this.galleryId=gallery.key;
 
       });
     console.log(obj);
     this.fbGalleryLinks=obj;
+
     console.log(this.fbGalleryLinks);
 
 
@@ -352,7 +355,7 @@ export class AddArticleComponent {
                 firebase.database().ref().update(updates);
                 this.articleObject= this.angularFireState.database.object('/ARTICLES/'+itemkey);
                 this.articleObject.update({articleID:itemkey});
-                let microArticle= this.af.database.list('/MICRO-ARTICLES');
+                let microArticle= this.af.database.list('/MICRO-ARTICLES/'+itemkey);
                 microArticle.push({
                   articleID:itemkey,
                   title: formData.value.title,
