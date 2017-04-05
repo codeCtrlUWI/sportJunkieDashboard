@@ -25,10 +25,10 @@ import {PanelModule} from 'primeng/primeng';
 import { ArticleService } from './article.service';
 import {ModalModule} from 'angular2-modal';
 import {GrowlModule} from 'primeng/primeng';
-
 import { BootstrapModalModule } from 'angular2-modal/plugins/bootstrap';
 import {AddArticleComponent} from "../add-article/add-article.component";
 import { ScoreBoardComponent } from '../score-boards/score-board.component';
+import {DropdownModule} from 'primeng/primeng';
 
 
 
@@ -50,6 +50,7 @@ import { ScoreBoardComponent } from '../score-boards/score-board.component';
     SharedModule,
     DataScrollerModule,
     DashRoutingModule,
+      DropdownModule
       ],
 
   exports: [

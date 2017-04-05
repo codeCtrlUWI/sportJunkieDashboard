@@ -1,14 +1,20 @@
 #buttonSubmit{
-    margin-top: 10px;
-    left: 25%;
+    margin-top: 70px;
+    left: 61%;
     width: 8%;
     height: 40px;
     margin-bottom: 90px;
+    font-size: 17px;
 }
 
-#growl{
-    width:50px
+#buttonSubmit:disabled{
+    cursor: not-allowed;
 }
+#buttonSubmit:hover{
+    background-color: lightgrey;
+
+}
+
 
 .md-progress{
     width: 40px;
@@ -17,18 +23,36 @@
 }
 
 #progresscircle{
+     display: inline-block;
+     position: absolute;
+     margin-left: 30px;
+     padding: 3px;
+    margin-top: 17px!important;
+ }
+
+#progresscircle2{
     display: inline-block;
     position: absolute;
     margin-left: 30px;
     padding: 3px;
 }
 
-.btn-warning{
+.btn-danger{
     display: inline-block;
     margin-left: 40px;
 }
 
 #fileInput{
+    display: inline-block;
+    width: 40%;
+}
+
+#blah{
+    width:120px;
+    height: 80px;
+}
+
+#gallerInput{
     display: inline-block;
     width: 40%;
 }
@@ -39,8 +63,7 @@
 }
 
 .back-button {
-  height:80px;
-  width: 80px;
+font-size: 36px;
   background-color: #cccccc;
   color: white;
 
@@ -49,4 +72,6 @@
 .back-button:hover{
   background-color: red;
 }
+
+button:focus {outline:0;}
 
