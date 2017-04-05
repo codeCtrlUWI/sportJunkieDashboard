@@ -355,15 +355,17 @@ export class AddArticleComponent {
                 firebase.database().ref().update(updates);
                 this.articleObject= this.angularFireState.database.object('/ARTICLES/'+itemkey);
                 this.articleObject.update({articleID:itemkey});
-                let microArticle= this.af.database.list('/MICRO-ARTICLES/'+itemkey);
-                microArticle.push({
-                  articleID:itemkey,
-                  title: formData.value.title,
-                  category:this.selectedCategoryName,
-                  numberOfClicks: this.numberOfClicks,
-                  urlToImage: this.imageLink,
-                  subtitle: formData.value.subTitle,
-                })
+                let microArticle= {};
+                  microArticle['/MICRO-ARTICLES/'+itemkey]={
+                    articleID:itemkey,
+                    authorUID: this.uid,
+                    title: formData.value.title,
+                    category:this.selectedCategoryName,
+                    numberOfClicks: this.numberOfClicks,
+                    urlToImage: this.imageLink,
+                    subtitle: formData.value.subTitle,
+                  };
+                firebase.database().ref().update(microArticle);
 
             }).then(()=>{
                 this.router.navigate(['/dashboard']);
