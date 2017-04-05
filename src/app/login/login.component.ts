@@ -123,6 +123,7 @@ export class LoginComponent {
                 let isAuthor= user.author;
                 if(isAuthor==true){
                     that.router.navigate(['/dashboard']);
+                    location.reload();
                 }
                 else{
                     if(that.exists==0){

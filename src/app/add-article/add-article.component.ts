@@ -131,6 +131,7 @@ export class AddArticleComponent {
               .height(80);
       };
       reader.readAsDataURL(this.file);
+      this.progress=0;
   };
 
 
@@ -150,6 +151,7 @@ export class AddArticleComponent {
     //this.gallery.push(tempGal[0])
 
     console.log(this.gallery);
+      this.progressGall=0;
 
     //
     // input.value = files.map(f => f.name).join(', ');
@@ -351,7 +353,9 @@ export class AddArticleComponent {
                 this.articleObject= this.angularFireState.database.object('/ARTICLES/'+itemkey);
                 this.articleObject.update({articleID:itemkey});
 
-            });
+            }).then(()=>{
+                this.router.navigate(['/dashboard']);
+        })
     }
 
 
