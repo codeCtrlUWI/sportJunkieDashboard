@@ -4,3 +4,14 @@
   border: 3px solid green;
   padding: 10px;
 }
+
+.back-button {
+  font-size: 36px;
+  background-color: #cccccc;
+  color: white;
+
+}
+
+.back-button:hover{
+  background-color: red;
+}

@@ -15,6 +15,11 @@ export class ArticleService {
 
     return Promise.resolve(this.article);
 
+
 }
+
+  setArticleImages(articleImages){
+    localStorage.setItem('articleImages', JSON.stringify({articleImageDem: articleImages}));
+  }
 
 }

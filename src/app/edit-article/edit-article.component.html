@@ -1,7 +1,10 @@
 <div class="ui-overlaypanel-content" style="margin-top: 120px;">
-  <button md-fab class="back-button" (click)="goBack()">
-    <i class="material-icons" style="font-size: 40px">arrow_back</i>
-  </button>
+  <div style="top:50%;position: fixed" class="buttonContainer  hvr-wobble-horizontal">
+    <button md-fab class="back-button" (click)="goBack()">
+      <i class="material-icons" style="font-size: 28px;top: 50%">arrow_back</i>
+    </button>
+  </div>
+ <div style="margin-left: 3%">
   <h1 *ngIf="article">{{article.title }}</h1>
   <h3 *ngIf="article">{{article.subtitle }}</h3>
   <a>Author: </a>
@@ -13,8 +16,9 @@
 
   <form #formData='ngForm' (ngSubmit)="onSubmit(formData)" id="form">
   <textarea id="data" name="articleText" rows="9" cols="140" pInputTextarea *ngIf="article" [(ngModel)]="article.articleData" > </textarea>
+    <br>
     <button pButton type="submit" class="ui-button-warning" [disabled]="!formData.valid" label="Submit" id="buttonSubmit"></button>
   </form>
-
+ </div>
 
 </div>
