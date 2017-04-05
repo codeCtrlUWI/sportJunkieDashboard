@@ -337,7 +337,7 @@ export class AddArticleComponent {
             authorLname: this.lastName,
             timeAndDateCreated: dateTime,
             lastUpdated: dateTime,
-            numberOfClicks: this.numberOfClicks,
+
             galleryID: this.galleryId,
         }).then
         (
@@ -352,6 +352,15 @@ export class AddArticleComponent {
                 firebase.database().ref().update(updates);
                 this.articleObject= this.angularFireState.database.object('/ARTICLES/'+itemkey);
                 this.articleObject.update({articleID:itemkey});
+                let microArticle= this.af.database.list('/MICRO-ARTICLES');
+                microArticle.push({
+                  articleID:itemkey,
+                  title: formData.value.title,
+                  category:this.selectedCategoryName,
+                  numberOfClicks: this.numberOfClicks,
+                  urlToImage: this.imageLink,
+                  subtitle: formData.value.subTitle,
+                })
 
             }).then(()=>{
                 this.router.navigate(['/dashboard']);

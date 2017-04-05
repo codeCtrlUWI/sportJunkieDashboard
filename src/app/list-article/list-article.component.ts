@@ -28,7 +28,7 @@ export class ListArticleComponent {
 
         var rArray=[];
 
-        var articleref= firebase.database().ref('/ARTICLES');
+        var articleref= firebase.database().ref('/MICRO-ARTICLES');
         articleref.orderByChild("authorUID").on("value",function(data) {
             rArray=[];
             data.forEach(function(snapshot) {
