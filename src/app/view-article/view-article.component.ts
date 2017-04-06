@@ -53,11 +53,14 @@ export class ViewArticleComponent implements OnInit {
       }
 
     }
+
     var currentUser = JSON.parse(localStorage.getItem('articleImages'));
     this.images= currentUser.articleImageDem;
 
     var galleryIDS= firebase.database().ref('/ARTICLES/'+this.articleID+'/galleryID');
     galleryIDS.once('value').then(snapshotter=>{
+
+    
       var images=[];
       var galleryRef= firebase.database().ref('/GALLERY/'+snapshotter.val());
       galleryRef.once('value').then(snapshots=>{
