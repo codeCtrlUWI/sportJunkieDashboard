@@ -345,14 +345,20 @@ export class AddArticleComponent {
         }).then
         (
             (item)=>{
-
                 console.log(item.key);
                 const itemkey= item.key;
-                const galkey=this.galleryId;
-                console.log(this.galleryId);
-                let updates={};
-                updates['/GALLERY/'+this.galleryId]=this.fbGalleryLinks;
-                firebase.database().ref().update(updates);
+                if (this.hasGallery==true){
+                  const galkey=this.galleryId;
+                  console.log(this.galleryId);
+                  let updates={};
+                  updates['/GALLERY/'+this.galleryId]=this.fbGalleryLinks;
+                  firebase.database().ref().update(updates);
+                  let gal={}
+                  gal['ARTICLES/'+itemkey+'galleryID']=this.galleryId;
+                  firebase.database().ref().update(gal);
+
+                }
+
                 this.articleObject= this.angularFireState.database.object('/ARTICLES/'+itemkey);
                 this.articleObject.update({articleID:itemkey});
                 let microArticle= {};

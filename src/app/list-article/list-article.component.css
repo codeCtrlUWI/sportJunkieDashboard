@@ -79,9 +79,18 @@ md-grid-tile figure {
   background-color: #cccccc;
   color: white;
 
+
 }
 
 .dash-button:hover{
   background-color: red;
 }
+
+.center {
+  margin: auto;
+  width: 50%;
+
+  padding: 10px;
+}
+
 

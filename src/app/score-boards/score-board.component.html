@@ -1,5 +1,5 @@
 
-<div class="ui-overlaypanel-content" style="margin-top: 58px; height:210px; width: 100%; text-align: center; background-color: #cccccc" >
+<div class="ui-overlaypanel-content" style="margin-top: 58px; height:570px; width: 100%; text-align: center; background-color: #cccccc" >
   <br>
 
 
@@ -14,26 +14,52 @@
 
     </select>
   </div>
-    <div *ngIf="category=='Football'">
+    <div *ngIf="category=='Football'" class="center">
       <form #formData='ngForm' (ngSubmit)="createGame(formData)" id="footballForm">
-      <input type="text"  [(ngModel)]="sport.team1" name="team1"> Team 1
-      <input type="number" [(ngModel)]="sport.team1Score" name="team1Score">Enter Score for team 1
-      <input type="text" [(ngModel)]="sport.team2" name="team2"> Team 2
-      <input type="number" [(ngModel)]="sport.team2Score" name="team2Score">Enter Score for team 2
+        Team 1: <br>
+      <input type="text"  [(ngModel)]="sport.team1" name="team1">
+        <br>
+        Enter Score for team 1:
+        <br>
+      <input type="number" [(ngModel)]="sport.team1Score" name="team1Score">
+        <br>
+        Team 2:
+        <br>
+      <input type="text" [(ngModel)]="sport.team2" name="team2">
+        <br>
+        Enter Score for team 2:
+        <br>
+      <input type="number" [(ngModel)]="sport.team2Score" name="team2Score">
+        <br>
       <button pButton type="submit" class="ui-button-warning" [disabled]="!formData.valid" label="Submit" id="buttonSubmit2"></button>
   </form>
 
     </div>
 
-    <div *ngIf="category=='Cricket'">
+    <div *ngIf="category=='Cricket'" class="center">
       <form #formData='ngForm' (ngSubmit)="createGame(formData)" id="cricketForm">
-      <input type="text" [(ngModel)]="sport.team1" name="team1"> Team 1
-      <input type="text" [(ngModel)]="sport.team2" name="team2"> Team 2
-      <input type="text" [(ngModel)]="sport.currentBatting" name="batting"> Enter team  currently batting team
-      <input type="text" [(ngModel)]="sport.team1Score" name="team1Score"> Enter score of Team 1
-      <input type="text" [(ngModel)]="sport.team2Score" name="team2Score"> Enter score of Team 1
-        <input type="text" [(ngModel)]="sport.overs" name="overs"> Enter current over
-        <input type="text" [(ngModel)]="sport.totalOvers" name="totalOvers"> Enter total number of overs
+        Team 1:<br>
+      <input type="text" [(ngModel)]="sport.team1" name="team1">
+        <br>
+        Team 2:<br>
+      <input type="text" [(ngModel)]="sport.team2" name="team2">
+        <br>
+        Enter team  currently batting team:<br>
+      <input type="text" [(ngModel)]="sport.currentBatting" name="batting">
+        <br>
+        Enter score of Team 1:<br>
+      <input type="text" [(ngModel)]="sport.team1Score" name="team1Score">
+        <br>
+        Enter score of Team 1:<br>
+      <input type="text" [(ngModel)]="sport.team2Score" name="team2Score">
+        <br>
+        Enter current over:<br>
+        <input type="text" [(ngModel)]="sport.overs" name="overs">
+        <br>
+        Enter total number of overs:<br>
+        <input type="text" [(ngModel)]="sport.totalOvers" name="totalOvers">
+
+        <br>
         <button pButton type="submit" class="ui-button-warning" [disabled]="!formData.valid" label="Submit" id="buttonSubmit1"></button>
       </form>
 
@@ -59,9 +85,9 @@
     </button>
   </div>
   <div class="col-3 col-sm-4  col-lg-3" *ngFor="let score of scores|async" style="float:left; margin-left: 3%">
-    <md-card *ngIf="score.category=='Football'" style="margin-bottom: 35px; height: 250px; width: 450px" >
+    <md-card *ngIf="score.category=='Football'" style="margin-bottom: 35px; height: 460px; width: 450px" >
       <md-card-title style="word-wrap: break-word">
-        {{score.team1}} vs {{score.team2}}
+        <h1> {{score.team1}} vs {{score.team2}}</h1>
       </md-card-title>
       <md-card-subtitle>
 
@@ -69,13 +95,14 @@
 
       <md-card-content>
         <form #formData='ngForm' (ngSubmit)="update(formData,score.$key)" id="footballUpdateForm">
-
-                    <input id="t1FScore" pInputText type="number" style="float: left"  name="team1Score" [(ngModel)]="score.team1Score"> <a style="float: left;"> ---</a>
+                Scores: <br>
+                   <input id="t1FScore" pInputText type="number" style="float: left"  name="team1Score" [(ngModel)]="score.team1Score"> <a style="float: left;"> ---</a>
                    <input id="t2FScore" pInputText type="number" style="float: left" name="team2Score" [(ngModel)]="score.team2Score">
           <br>
-                    <input id="gameStatus" pInputText type="text" name="status" [(ngModel)]="score.status">
+          <br>  Game Status: <br>
+                    <input id="FgameStatus" pInputText type="text" name="status" [(ngModel)]="score.status">
 
-
+                     <br>
                     <br>
                     <button pButton type="submit" class="ui-button-warning" [disabled]="!formData.valid" label="Update" ></button>
 
@@ -89,10 +116,10 @@
 
     </md-card>
 
-    <md-card *ngIf="score.category=='Cricket'"  style="margin-bottom: 35px;height: 250px; width: 400px" >
+    <md-card *ngIf="score.category=='Cricket'"  style="margin-bottom: 35px;height: 460px; width: 450px" >
 
     <md-card-title style="word-wrap: break-word">
-      {{score.team1}} vs {{score.team2}}
+      <h1>{{score.team1}} vs {{score.team2}}</h1>
     </md-card-title>
     <md-card-subtitle>
 
@@ -100,14 +127,27 @@
 
     <md-card-content >
       <form #formData='ngForm' (ngSubmit)="update(formData,score.$key)" id="cricketUpdateForm">
-   	         Batting: {{score.batting}}
+   	         Batting:<br>
                 <input id="currBatting" pInputText  type ="text" name="batting" [(ngModel)]="score.batting" >
-               {{score.team1}}:
+        <br>
+        <br>
+               {{score.team1}}:<br>
                 <input id="t1CScore" pInputText type="text"  name="team1Score" [(ngModel)]="score.team1Score">
-                {{score.team2}}:
+        <br>
+        <br>
+                {{score.team2}}:<br>
                 <input id="t2CScore" pInputText type="text"  name="team2Score" [(ngModel)]="score.team2Score">
+        <br>
+        <br>
+        Innings:<br>
                 <input id="overs" pInputText type="number" name="overs" [(ngModel)]="score.overs">/{{score.totalOvers}} overs
-        <br>		          <br>
+        <br>
+
+        <br>
+        Game Status:<br>
+        <input id="CgameStatus" pInputText type="text" name="status" [(ngModel)]="score.status">
+        <br>
+        <br>
                <button pButton type="submit" class="ui-button-warning" [disabled]="!formData.valid" label="Update" ></button>
 
              </form>
