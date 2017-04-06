@@ -38,7 +38,7 @@ export class ViewArticleComponent implements OnInit {
 
 
 
-  ngOnInit(): void {
+  ngOnInit(){
 
     var currentUser = JSON.parse(localStorage.getItem('currentArticle'));
     this.article= currentUser.anArticle;
@@ -53,8 +53,14 @@ export class ViewArticleComponent implements OnInit {
       }
 
     }
-    this.galleryImages= this.af.database.object('/ARTICLES/'+this.articleID+'/galleryID/',{preserveSnapshot:true});
-    this.galleryImages.subscribe(snapshotter=>{
+
+    var currentUser = JSON.parse(localStorage.getItem('articleImages'));
+    this.images= currentUser.articleImageDem;
+
+    var galleryIDS= firebase.database().ref('/ARTICLES/'+this.articleID+'/galleryID');
+    galleryIDS.once('value').then(snapshotter=>{
+
+    
       var images=[];
       var galleryRef= firebase.database().ref('/GALLERY/'+snapshotter.val());
       galleryRef.once('value').then(snapshots=>{

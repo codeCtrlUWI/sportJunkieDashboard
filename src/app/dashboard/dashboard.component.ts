@@ -28,7 +28,6 @@ export class DashboardComponent {
     this.af.auth.logout().then(
       (success) => {
         this.router.navigate(['/login']);
-        this.af.auth.unsubscribe();
           window.location.reload();
       })
   }
