@@ -1,17 +1,20 @@
 
 
-<div class="ui-overlaypanel-content" style="margin-top: 58px; height:210px; width: 100%; text-align: center; background-color: #cccccc" >
+<div class="ui-overlaypanel-content" style="margin-top: 58px; height:150px; width: 100%; text-align: center; background-color: #cccccc;" >
+  <div style="display: block;text-align: center">
   <br>
-  <button md-fab  style="float:left;" (click)="scoreBoard()">
-    <md-icon  >add</md-icon>
-    <p>Scoreboards</p>
+    <div style="margin-right: 10%">
+  <button md-fab class="dash-button" (click)="scoreBoard()">
+    <i style="font-size: 35px; text-align: center" class="material-icons">content_paste</i>
   </button>
-
-  <div>
-  <button md-fab class="add-button" (click)="addArticle()">
+  <p style="display: block;text-align: center">Scoreboards</p>
+    </div>
+  <div style="margin-left: 10%; margin-top: -6.5%" >
+  <button md-fab class="dash-button" (click)="addArticle()">
     <md-icon  >add</md-icon>
   </button>
-  <p style="display: block;text-align: center;margin-left: 52px">Add Article</p>
+  <p style="display: block;text-align: center;">Add Article</p>
+  </div>
   </div>
 
 
@@ -19,27 +22,34 @@
 </div>
 
 <div class="ui-overlaypanel-content" style="margin-top: 120px;">
-  <div class=" col-3 col-sm-4  col-lg-3" *ngFor="let article of articles" style="float:left">
-    <md-card  id="eachCard" style="margin-bottom: 35px" >
-      <md-card-title style="word-wrap: break-word">
-        {{article.title}}
-      </md-card-title>
-      <md-card-subtitle>
-        {{article.category}}
-      </md-card-subtitle>
-      <img id="cardImg" md-card-image src="{{article.urlToImage}}">
-      <div id="textUnder">
-        {{article.subtitle}}
+
+
+    <div  style="font-family: 'Open Sans',sans-serif" class="col col-5 col-sm-5 col-md-5 fadeInDown">
+      <div *ngFor="let starter of articles|slice:0:1" >
+        <h4 *ngIf="starter.articleID" style="font-family: 'Open Sans',sans-serif;font-size: 26px;margin-bottom: 0!important;">Latest Articles </h4>
+        <hr *ngIf="starter.articleID"  style="width: 100%;background-color: black;margin-bottom: 25px">
       </div>
+      <div *ngFor="let article of articles" style="display:inline">
+        <md-card class="example-card">
+          <div style="position: absolute;" class="Headings">
+            <md-card-title id="titleOfCard">{{article.title}}</md-card-title>
+            <hr style="background-color: white">
+            <md-card-subtitle style="margin-left: 3px;color: white">{{article.category}}</md-card-subtitle>
+          </div>
+          <md-card-content style="">
+            <img style="height: 440px;display: inline-block;z-index: -1" md-card-image src="{{article.urlToImage}}">
+            <p style="font-size: 16px;font-weight: 600">{{article.subtitle}}</p>
+          </md-card-content>
+          <md-card-actions layout="row" layout-align="end center">
+            <button pButton type="button" label="View" (click)="viewArticle(article.articleID)"></button>
+            <button pButton type="button" label="Edit" (click)="editArticle(article.articleID)"></button>
+          </md-card-actions>
+        </md-card>
+      </div>
+    </div>
 
-      <md-card-actions layout="row" layout-align="end center">
-        <button (click)="viewArticle(article.articleID)">View</button>
-        <button (click)="editArticle(article.articleID)">Edit</button>
-      </md-card-actions>
 
-    </md-card>
 
-  </div>
 </div>
 
 

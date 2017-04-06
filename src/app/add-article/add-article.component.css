@@ -42,6 +42,11 @@
     margin-left: 40px;
 }
 
+.btn-success{
+  display: inline-block;
+  margin-left: 40px;
+}
+
 #fileInput{
     display: inline-block;
     width: 40%;

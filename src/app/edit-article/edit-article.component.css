@@ -1,6 +1,7 @@
+
+
 .back-button {
-  height:80px;
-  width: 80px;
+  font-size: 36px;
   background-color: #cccccc;
   color: white;
 
@@ -9,3 +10,4 @@
 .back-button:hover{
   background-color: red;
 }
+

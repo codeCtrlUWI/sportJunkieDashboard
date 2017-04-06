@@ -71,7 +71,10 @@
   <div class="Upload">
     <label style="display: block;font-size: 20px;font-family: 'Open Sans'">Images for Gallery:</label>
     <input type="file" accept=".jpg,.png,.gif" (change)="onGallChange($event)" multiple class="form-control" id="gallerInput"  placeholder="Search for..." >
-    <button class="btn btn-danger" type="button" [disabled]="!galleryFile" (click)="uploadGallery();growl()"> Upload file </button>
+    <button *ngIf="hasGallery==false" class="btn btn-danger" type="button" [disabled]="!galleryFile" (click)="uploadGallery();growl()"> Upload file </button>
+    <button class="btn btn-success" style="height:40px; width: 114.03px"  *ngIf="hasGallery==true">
+    <i class="material-icons">done_all</i>
+    </button>
     <div *ngIf="progressGall!=0 && progressGall!=100 &&galleryFile!=null" id="progresscircle2">
       <md-progress-circle  class="md-progress" mode="indeterminate" ></md-progress-circle>
     </div>

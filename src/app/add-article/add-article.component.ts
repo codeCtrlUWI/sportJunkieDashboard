@@ -48,6 +48,7 @@ export class AddArticleComponent {
   gallery: any[] = [];
   fbGalleryLinks={};
   galleryFile;
+  hasGallery=false;
     progressGall=0;
     selectedCategoryName;
 
@@ -213,6 +214,7 @@ export class AddArticleComponent {
     })
   }
   sendToFB(){
+
     let obj={};
     var newLinks=[];
     for (var i = 0; i < this.gallery.length; i++) {
@@ -222,12 +224,13 @@ export class AddArticleComponent {
     this.galleries.push(obj).then(
       (gallery)=>{
         console.log(gallery.key);
-
+        this.hasGallery=true;
         this.galleryId=gallery.key;
 
       });
     console.log(obj);
     this.fbGalleryLinks=obj;
+
     console.log(this.fbGalleryLinks);
 
 
@@ -337,7 +340,7 @@ export class AddArticleComponent {
             authorLname: this.lastName,
             timeAndDateCreated: dateTime,
             lastUpdated: dateTime,
-            numberOfClicks: this.numberOfClicks,
+
             galleryID: this.galleryId,
         }).then
         (
@@ -352,6 +355,17 @@ export class AddArticleComponent {
                 firebase.database().ref().update(updates);
                 this.articleObject= this.angularFireState.database.object('/ARTICLES/'+itemkey);
                 this.articleObject.update({articleID:itemkey});
+                let microArticle= {};
+                  microArticle['/MICRO-ARTICLES/'+itemkey]={
+                    articleID:itemkey,
+                    authorUID: this.uid,
+                    title: formData.value.title,
+                    category:this.selectedCategoryName,
+                    numberOfClicks: this.numberOfClicks,
+                    urlToImage: this.imageLink,
+                    subtitle: formData.value.subTitle,
+                  };
+                firebase.database().ref().update(microArticle);
 
             }).then(()=>{
                 this.router.navigate(['/dashboard']);

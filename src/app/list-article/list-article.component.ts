@@ -17,6 +17,7 @@ import {ArticleService} from "../dashboard/article.service";
 
 export class ListArticleComponent {
     articles;
+    images;
 
   constructor(private af: AngularFire, private router: Router,private as:ArticleService) {
 
@@ -28,7 +29,7 @@ export class ListArticleComponent {
 
         var rArray=[];
 
-        var articleref= firebase.database().ref('/ARTICLES');
+        var articleref= firebase.database().ref('/MICRO-ARTICLES');
         articleref.orderByChild("authorUID").on("value",function(data) {
             rArray=[];
             data.forEach(function(snapshot) {
@@ -54,9 +55,27 @@ export class ListArticleComponent {
     this.router.navigate(['/dashboard/add']);
   }
 
-  viewArticle(articleId){
-      this.as.getArticle(articleId);
-    this.router.navigate(['/dashboard/view',articleId]);
+  viewArticle(articleID){
+      this.as.getArticle(articleID);
+      var galleryIDS= firebase.database().ref('/ARTICLES/'+articleID+'/galleryID');
+      galleryIDS.once('value').then(snapshotter=>{
+          var images=[];
+          var galleryRef= firebase.database().ref('/GALLERY/'+snapshotter.val());
+          galleryRef.once('value').then(snapshots=>{
+              snapshots.forEach(snapshot=>{
+                  images.push(snapshot.val());
+                  console.log(snapshot.val());
+              })
+          }).then(()=>{
+              this.images=images;
+              console.log(this.images.length);
+              console.log(images.length);
+              this.as.setArticleImages(images);
+          }).then(()=>{
+              this.router.navigate(['dashboard/view/',articleID]);
+          })
+
+      })
   }
 
   editArticle(articleId) {

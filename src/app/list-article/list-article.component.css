@@ -19,6 +19,33 @@ md-grid-tile figure {
 
 }
 
+.example-card{
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  margin-bottom: 30px;
+  font-family: 'Open Sans', sans-serif;
+  cursor: pointer;
+}
+
+#realList{
+  margin-left: 40px !important;
+}
+
+#titleOfCard{
+  font-weight:600;
+  font-size: 34px;
+  word-wrap: break-word;
+  line-height: 30px;
+  color: white;
+}
+
+.Headings{
+  background-color: rgba(0, 0, 0, 0.7);
+  color: rgba(0, 0, 0, 0.7);
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-right: 20px;
+  padding-top: 10px;
+}
 .mat-grid-list{
   margin-top: 65px;
 }
@@ -46,7 +73,7 @@ md-grid-tile figure {
 ::-webkit-scrollbar-thumb{
   background: red;
 }
-.add-button {
+.dash-button {
   height:80px;
   width: 80px;
   background-color: #cccccc;
@@ -54,7 +81,7 @@ md-grid-tile figure {
 
 }
 
-.add-button:hover{
+.dash-button:hover{
   background-color: red;
 }
 
