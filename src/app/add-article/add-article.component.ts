@@ -341,7 +341,7 @@ export class AddArticleComponent {
             timeAndDateCreated: dateTime,
             lastUpdated: dateTime,
 
-            galleryID: this.galleryId,
+
         }).then
         (
             (item)=>{
@@ -354,7 +354,7 @@ export class AddArticleComponent {
                   updates['/GALLERY/'+this.galleryId]=this.fbGalleryLinks;
                   firebase.database().ref().update(updates);
                   let gal={}
-                  gal['ARTICLES/'+itemkey+'galleryID']=this.galleryId;
+                  gal['ARTICLES/'+itemkey+'/galleryID']=this.galleryId;
                   firebase.database().ref().update(gal);
 
                 }
