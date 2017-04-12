@@ -49,6 +49,7 @@ export class AddArticleComponent {
   fbGalleryLinks={};
   galleryFile;
   hasGallery=false;
+  hasDisplay=false;
     progressGall=0;
     selectedCategoryName;
 
@@ -211,7 +212,9 @@ export class AddArticleComponent {
       //arrToObj(i,obj,imglink)
       //console.log(obj)
       //newLinks.push(imglink);
-    })
+      that.msgs=[];
+      that.msgs.push({severity: 'success', summary: 'Hooray', detail: 'Upload Completed!'});
+    });
   }
   sendToFB(){
 
@@ -316,7 +319,10 @@ export class AddArticleComponent {
 
             that.msgs=[];
             that.msgs.push({severity: 'success', summary: 'Hooray', detail: 'Upload Completed!'});
+
         });
+    this.hasDisplay=true;
+
     }
 
 
@@ -341,7 +347,7 @@ export class AddArticleComponent {
             timeAndDateCreated: dateTime,
             lastUpdated: dateTime,
 
-
+            galleryID: this.galleryId,
         }).then
         (
             (item)=>{

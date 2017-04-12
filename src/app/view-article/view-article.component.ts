@@ -60,7 +60,7 @@ export class ViewArticleComponent implements OnInit {
     var galleryIDS= firebase.database().ref('/ARTICLES/'+this.articleID+'/galleryID');
     galleryIDS.once('value').then(snapshotter=>{
 
-    
+
       var images=[];
       var galleryRef= firebase.database().ref('/GALLERY/'+snapshotter.val());
       galleryRef.once('value').then(snapshots=>{
@@ -73,7 +73,7 @@ export class ViewArticleComponent implements OnInit {
           this.images=images;
           this.as.setArticleImages(images);
         }
-        Galleria.loadTheme('https://cdnjs.cloudflare.com/ajax/libs/galleria/1.5.5/themes/classic/galleria.classic.min.js');
+        Galleria.loadTheme('https://cdnjs.cloudflare.com/ajax/libs/galleria/1.5.6/themes/classic/galleria.classic.min.js');
         Galleria.configure({
           lightbox: true,
           transition: 'fade',

@@ -15,3 +15,11 @@
 .back-button:hover{
   background-color: red;
 }
+
+
+  .score-card {
+    margin-bottom: 35px;
+    height: 460px;
+    width: 460px
+  }
+

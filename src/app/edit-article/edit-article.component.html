@@ -1,42 +1,13 @@
 <div class="ui-overlaypanel-content" style="margin-top: 120px;">
 
-  <button md-fab class="back-button" (click)="goBack()">
-    <i class="material-icons" style="font-size: 40px">arrow_back</i>
-  </button>
+  <div style="top:50%;position: fixed; z-index: 10000" class="buttonContainer  hvr-wobble-horizontal">
+    <button md-fab class="back-button" (click)="goBack()">
+      <i class="material-icons" style="font-size: 28px;top: 50%">arrow_back</i>
+    </button>
+  </div>
   <div style="height: 100%;width: 100%" class="container-fluid">
 
 
-    <div class="row" style="margin-bottom: 20px">
-      <nav class="navbar navbar-toggleable-xl navbar-inverse bg-inverse fixed-top" >
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <a class="navbar-brand" href="/home" style="margin-left:10px;font-family: 'Audiowide',cursive">SportJunkie™</a>
-        <div class="collapse navbar-collapse d-flex justify-content-start"  id="navbarNavDropdown">
-          <ul class="navbar-nav" style="margin-left: 40px;font-size: 16px;font-weight: bold;font-family: 'Open Sans', sans-serif;">
-            <li class="nav-item p-2">
-              <a  class="nav-link hvr-pop" href="/home">Home</a>
-            </li>
-            <li class="nav-item p-2">
-              <a class="nav-link hvr-pop" href="/cricket">Cricket</a>
-            </li>
-            <li class="nav-item p-2">
-              <a class="nav-link hvr-pop" href="/football">Football</a>
-            </li>
-            <li class="nav-item p-2">
-              <a class="nav-link hvr-pop" href="/swimming">Swimming</a>
-            </li>
-          </ul>
-        </div>
-        <p style="color: white;margin-top: 10px;text-align: center;display: inline-flex;align-items: center;justify-content: center;width: 100%" class="d-flex justify-content-start">Currently logged in as: {{firstName}} {{lastName}}</p>
-        <div style="margin-right: 40px" class="d-flex justify-content-start">
-          <button class="viewProfileButton"  (click)="viewProfile()" md-raised-button style="font-family: 'Audiowide',bold"> Profile</button>
-        </div>
-        <div class="d-flex justify-content-start">
-          <button class="logoutButton" (click)="logout()" md-raised-button style="font-family: 'Audiowide',bold"> Logout</button>
-        </div>
-      </nav>
-    </div>
 
     <div  class="row">
       <div class="col col-2 col-sm-2 col-md-2">
@@ -55,10 +26,13 @@
 
           <br><br><br>
           <form #formData='ngForm' (ngSubmit)="onSubmit(formData)" id="form">
-            <textarea id="data" name="articleText" rows="9" cols="140" pInputTextarea *ngIf="article" [(ngModel)]="article.articleData" > </textarea>
+            <textarea id="data" name="articleText" rows="9" cols="70" pInputTextarea *ngIf="article" [(ngModel)]="article.articleData" > </textarea>
             <br>
             <button pButton type="submit" class="ui-button-warning" [disabled]="!formData.valid" label="Submit" id="buttonSubmit"></button>
           </form>
+
+          <div style="display: inline-block; height: 40px!important;margin-left: 10px;margin-right: 10px;font-size: 30px;vertical-align: middle" class="vertical-line"></div>
+          <a style="display:inline-block; font-family: 'Open Sans';line-height: 24px;font-size: 17px;font-weight: 500" *ngIf="article">Date Created: {{article.timeAndDateCreated}}</a>
           <div style="display: inline-block; height: 40px!important;margin-left: 10px;margin-right: 10px;font-size: 30px;vertical-align: middle" class="vertical-line"></div>
           <p style="margin-left: 10px; display: inline-block; font-family: 'Open Sans';line-height: 24px;font-size: 17px;font-weight: 500" *ngIf="article">Last Updated: {{article.lastUpdated}}</p>
 

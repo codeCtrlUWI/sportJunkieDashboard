@@ -74,7 +74,7 @@ export class EditArticleComponent implements OnInit {
           this.images=images;
           this.as.setArticleImages(images);
         }
-        Galleria.loadTheme('https://cdnjs.cloudflare.com/ajax/libs/galleria/1.5.5/themes/classic/galleria.classic.min.js');
+        Galleria.loadTheme('https://cdnjs.cloudflare.com/ajax/libs/galleria/1.5.6/themes/classic/galleria.classic.min.js');
         Galleria.configure({
           lightbox: true,
           transition: 'fade',
@@ -92,6 +92,9 @@ export class EditArticleComponent implements OnInit {
 
     });
   }
+  goBack(){
+    this.location.back();
+  }
 
   onSubmit(formData) {
     console.log(formData.value);
@@ -99,6 +102,7 @@ export class EditArticleComponent implements OnInit {
     console.log(this.data);
     this.route.params.subscribe(params =>{
       this.af.database.object("/ARTICLES/"+params['id']).update({articleData:this.data})
+      this.goBack();
     });
 
     //add confirmation popup and error handling
@@ -110,9 +114,7 @@ export class EditArticleComponent implements OnInit {
 
 
 
-  goBack(){
-    this.location.back();
-  }
+
 
 
 }

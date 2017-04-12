@@ -24,7 +24,7 @@
 
   <div class="form-group" style="width: 50%;margin-top: 5%">
      <label style="font-size: 20px; font-family: 'Open Sans'" for="data" > Article:</label>
-    <textarea rows="9" cols="140" id="data" name="data" (ngModel)="data" pInputTextarea required></textarea>
+    <textarea rows="9" cols="80" id="data" name="data" (ngModel)="data" pInputTextarea required></textarea>
   </div>
 
 
@@ -56,7 +56,10 @@
     <div class="Upload">
       <label style="display: block;font-size: 20px;font-family: 'Open Sans' ">Image for Article:</label>
       <input type="file" accept=".jpg,.png,.gif" (change)="onChange($event)" class="form-control" id="fileInput"  placeholder="Search for..." required>
-      <button class="btn btn-danger" type="button" [disabled]="!file" (click)="UploadFile();growl()"> Upload file </button>
+      <button *ngIf="hasDisplay==false" class="btn btn-danger" type="button" [disabled]="!file" (click)="UploadFile();growl()"> Upload file </button>
+      <button class="btn btn-success" style="height:40px; width: 114.03px"  *ngIf="hasDisplay==true">
+        <i class="material-icons">done</i>
+      </button>
       <div *ngIf="progress!=0 && progress!=100 &&file!=null" id="progresscircle">
         <md-progress-circle  class="md-progress" mode="indeterminate" ></md-progress-circle>
       </div>
