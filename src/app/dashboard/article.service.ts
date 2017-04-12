@@ -18,7 +18,7 @@ export class ArticleService {
 }
 
   setArticleImages(articleImages){
-    sessionStorage.setItem('articleImages', JSON.stringify({articleImageDem: articleImages}));
+    localStorage.setItem('articleImages', JSON.stringify({articleImageDem: articleImages}));
   }
 
 }
